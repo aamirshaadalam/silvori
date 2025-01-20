@@ -1,0 +1,180 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_4NBpJr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_QMUqhK": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us",
+            "heading_size": "h1"
+          }
+        },
+        "text_yFmgGJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Founded in 2015, Silvori started with a simple idea: to make fashion accessible without compromising on quality or ethics. What began as a small venture has grown into a community-driven brand loved by fashion enthusiasts worldwide.</p><p>Our team is made up of designers, creators, and dreamers who are committed to crafting apparel that fits seamlessly into your life. From chic casuals to versatile essentials, every piece is thoughtfully designed to celebrate your lifestyle.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QMUqhK",
+        "text_yFmgGJ"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/banner_image.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-7dcef43c-4671-4979-bf9c-ba9010adf558",
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_cfc93q": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_naebwA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Vision",
+            "heading_size": "h1"
+          }
+        },
+        "text_i39JCn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Silvori, we believe clothing is more than just fabric – it’s a statement of individuality, a celebration of diversity, and a way to express your unique story. That’s why we’re passionate about creating high-quality apparel that blends timeless designs with modern trends, ensuring you look and feel your best, every day.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_naebwA",
+        "text_i39JCn"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/New_Project_3.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-7dcef43c-4671-4979-bf9c-ba9010adf558",
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_NTF9eg": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YQaA9D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Mission",
+            "heading_size": "h1"
+          }
+        },
+        "text_jQEJzm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Empower individuals to express their unique style with confidence through a curated collection of high-quality, trend-forward fashion. We blend elegance and functionality, ensuring our customers feel stylish, comfortable, and inspired every day.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YQaA9D",
+        "text_jQEJzm"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/New_Project_2.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-7dcef43c-4671-4979-bf9c-ba9010adf558",
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_wN4pCi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_GWbHWf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Values",
+            "heading_size": "h1"
+          }
+        },
+        "text_DxdWQh": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Quality:</strong> We carefully select premium fabrics and pay attention to every detail in the design process.</p><p><strong>Sustainability:</strong> We’re committed to reducing our environmental footprint by using eco-friendly materials and ethical production practices.</p><p><strong>Inclusivity:</strong> Our collections are designed for all shapes, sizes, and styles, ensuring everyone can find something they love.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GWbHWf",
+        "text_DxdWQh"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/New_Project_4.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-7dcef43c-4671-4979-bf9c-ba9010adf558",
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_4NBpJr",
+    "image_with_text_cfc93q",
+    "image_with_text_NTF9eg",
+    "image_with_text_wN4pCi"
+  ]
+}

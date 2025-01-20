@@ -1,0 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/New_Project_10.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
+    "rich_text_P6EzRb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jhNae3": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>TIMELESS STYLE FOR EVERY OCCASION</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "button_UrVwcP": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jhNae3",
+        "button_UrVwcP"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5fd66c63-dc2b-45c3-a3c0-92ec3ac9270e",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_HtWqiq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_PEhbBL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_12.jpg",
+            "title": "<strong>CASUAL WEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_ya6mtx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_13.jpg",
+            "title": "<strong>PARTY WEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_ktewM6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_21.jpg",
+            "title": "<strong>ETHNIC WEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_4T9ayx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_16.jpg",
+            "title": "<strong>OFFICE WEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_BfnWk7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_17.jpg",
+            "title": "<strong>FORMAL WEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_hACUNk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_18.jpg",
+            "title": "<strong>ATHLEISURE</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_q3wBYM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_19.jpg",
+            "title": "<strong>SLEEPWEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        },
+        "column_DdEgaR": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_20.jpg",
+            "title": "<strong>LOUNGEWEAR</strong>",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "column_PEhbBL",
+        "column_ya6mtx",
+        "column_ktewM6",
+        "column_4T9ayx",
+        "column_BfnWk7",
+        "column_hACUNk",
+        "column_q3wBYM",
+        "column_DdEgaR"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "<strong>BEST SELLERS</strong>",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "outline",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_6dhrAi": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "<strong>NEW ARRIVALS</strong>",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "new-arrivals",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-2f9de030-3777-4f84-a082-800a93fe9d5d",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn_xEYW4r": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hW4NTh": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Myzfj6": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7bHqrA": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_hW4NTh",
+        "column_Myzfj6",
+        "column_7bHqrA"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-a1dc0b48-75a5-4b6a-9ecd-48695bd7deb1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17367948855329a317": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_ptJnwe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_ptJnwe"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "silvori_app_settings_c9CCB4": {
+      "type": "silvori-app-settings",
+      "blocks": {
+        "reviews_carousel_hzCwie": {
+          "type": "reviews_carousel",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-a1dc0b48-75a5-4b6a-9ecd-48695bd7deb1",
+            "container_color_scheme": "scheme-a1dc0b48-75a5-4b6a-9ecd-48695bd7deb1"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_carousel_hzCwie"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_banner",
+    "rich_text_P6EzRb",
+    "multicolumn_HtWqiq",
+    "featured_collection",
+    "featured_collection_6dhrAi",
+    "multicolumn_xEYW4r",
+    "17367948855329a317",
+    "silvori_app_settings_c9CCB4"
+  ]
+}

@@ -1,0 +1,74 @@
+{{ 'silvori-app-settings.css' | asset_url | stylesheet_tag }}
+
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'review_widget' -%}
+      <script>
+        window.review_widget_settings = {
+          'colorScheme': {{ block.settings.color_scheme.settings | json }},
+          'bodyFontStyle': '{{ settings.type_body_font.style }}',
+          'bodyFontFamily': '{{ settings.type_body_font.family }}',
+          'bodyFontWeight': '{{ settings.type_body_font.weight }}',
+        };
+      </script>
+    {%- when 'reviews_carousel' -%}
+      <script>
+        window.reviews_carousel_settings = {
+          'colorScheme': {{ block.settings.color_scheme.settings | json }},
+          'containerColorScheme': {{ block.settings.container_color_scheme.settings | json }},
+          'bodyFontStyle': '{{ settings.type_body_font.style }}',
+          'bodyFontFamily': '{{ settings.type_body_font.family }}',
+          'bodyFontWeight': '{{ settings.type_body_font.weight }}',
+        };
+      </script>
+  {%- endcase -%}
+{%- endfor -%}
+
+  
+{% schema %}
+{
+  "name": "App Settings",
+  "settings": [],
+  "blocks": [
+    {
+      "type":"review_widget",
+      "name": "Review Widget",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color Scheme",
+          "default": "scheme-1"
+        }
+      ]
+    },
+    {
+      "type":"reviews_carousel",
+      "name": "Reviews Carousel",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color Scheme",
+          "default": "scheme-1"
+        },
+        {
+          "type": "color_scheme",
+          "id": "container_color_scheme",
+          "label": "Container Color Scheme",
+          "default": "scheme-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "App Settings"
+    }
+  ]
+}
+{% endschema %}
+
+<script src="{{ 'silvori-app-settings.js' | asset_url }}" defer="defer"></script>

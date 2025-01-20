@@ -1,0 +1,74 @@
+<!-- custom-table.liquid -->
+{{ 'custom-table.css' | asset_url | stylesheet_tag }}
+<style>
+    .ct-primary-bg-color {
+        background-color: {{ section.settings.color_scheme.settings.background }};
+    }
+  .ct-primary-color {
+        color: {{ section.settings.color_scheme.settings.text }};
+    }
+  .ct-btn-bg-color {
+        background-color: {{ section.settings.color_scheme.settings.button }} !important;
+    }
+  .ct-btn-color {
+        color: {{ section.settings.color_scheme.settings.button_label }} !important;
+    }
+</style>
+<div class="custom-table-section ct-primary-bg-color" data-table-headers='{{ section.settings.table_headers | escape }}' data-table-body='{{ section.settings.table_body | escape }}'>
+  <table class="custom-table" >
+    <thead >
+      {% assign headers = section.settings.table_headers | split: ',' %}
+      <tr class="ct-btn-color">
+          <th class="ct-btn-bg-color" colspan="{{ headers.size }}">{{ section.settings.table_title | strip }}</th>
+      </tr>
+      <tr class="ct-btn-color">
+        {% for header in headers %}
+          <th class="ct-btn-bg-color">{{ header | strip }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody class="ct-primary-color">
+      <!-- Table rows will be dynamically populated by JavaScript -->
+    </tbody>
+  </table>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Table",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "table_title",
+      "label": "Table Title",
+      "default": "Table Title"
+    },
+    {
+      "type": "text",
+      "id": "table_headers",
+      "label": "Table Headers (Comma-Separated)",
+      "default": "Product, Price, Stock"
+    },
+    {
+      "type": "textarea",
+      "id": "table_body",
+      "label": "Table Row Data (Comma-Separated)",
+      "default": "T-shirt, $25.00, In Stock \n Jeans,$40.00,Out of Stock",
+      "info": "Enter your table data as comma-separated string. Enter each row on a new line (Shift + Enter)."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom Table"
+    }
+  ]
+}
+{% endschema %}
+
+<script src="{{ 'custom-table.js' | asset_url }}" defer="defer"></script>

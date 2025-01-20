@@ -1,0 +1,106 @@
+/*Judge Me: Review app custom css*/
+#judgeme_product_reviews{
+  font: inherit !important;
+  font-size: 1.5rem !important;
+}
+
+.jdgm-write-rev-link {
+  border-radius: 5px !important;
+  color: #faf6f0 !important;
+  font: inherit !important;
+}
+
+.jdgm-write-rev-link:hover {
+  transform: scale(1.02) !important;
+  opacity: 1 !important;
+}
+
+.jdgm-btn.jdgm-btn--border.jdgm-cancel-rev {
+  border-radius: 5px !important;
+  border: 1px solid #000000 !important;
+  font: inherit !important;
+}
+
+.jdgm-btn.jdgm-btn--border.jdgm-cancel-rev:hover {
+  border: 2px solid #000000 !important;
+  opacity: 1 !important;
+  transform: scale(1.02) !important;
+}
+
+.jdgm-btn.jdgm-btn--solid.jdgm-submit-rev {
+  border-radius: 5px !important;
+  font: inherit !important;
+}
+
+.jdgm-btn.jdgm-btn--solid.jdgm-submit-rev:hover {
+  opacity: 1 !important;
+  transform: scale(1.02) !important;
+}
+
+form.jdgm-form input[type="text"], 
+form.jdgm-form input[type="email"],
+form.jdgm-form textarea {
+  border: 1px solid lightgray !important;
+  border-radius: 5px !important;
+  background-color: transparent !important;
+}
+
+form.jdgm-form input[type="text"]:focus, 
+form.jdgm-form input[type="email"]:focus,
+form.jdgm-form textarea:focus {
+  border: 2px solid gray !important;
+  border-radius: 5px !important;
+  background-color: transparent !important;
+}
+
+form.jdgm-form select[name="reviewer_name_format"]:focus-visible{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/******************** Reviews Carousel **************************/
+.jdgm-all-reviews-rating-wrapper{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.jdgm-carousel-number-of-reviews{
+  margin-left: 15px !important;
+}
+
+.jdgm-carousel__item-container{
+  border-radius: 10px !important;
+  /*-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15); 
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);*/
+}
+
+.jdgm-carousel-item__left-column {
+  vertical-align: middle !important;
+}
+
+.jdgm-carousel-item__review-title {
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+}
+
+.jdgm-carousel-title{
+  font-weight: bold !important;
+  font-size: 2.5rem !important;
+  text-align: center !important;
+}
+
+.jdgm-carousel-item__review-wrapper{
+  width: calc(74% - 200px) !important;
+}
+
+.jdgm-carousel-item__image-wrapper {
+  width: 26% !important;
+}
+
+.jdgm-carousel__left-arrow,
+.jdgm-carousel__right-arrow{
+  margin-top: -128px !important;
+  border-color: rgba(0,0,0,0.75) !important;
+}
