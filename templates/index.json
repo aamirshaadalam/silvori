@@ -98,7 +98,68 @@
         "slide_z7eWWP": {
           "type": "slide",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/New_Project_19.jpg",
+            "title": "<strong>3</strong>",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_Lbeqre": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_18.jpg",
+            "title": "<strong>4</strong>",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_yz4Lbm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_17.jpg",
+            "title": "<strong>5</strong>",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_JFL9iD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_16.jpg",
+            "title": "<strong>6</strong>",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_FmGdtp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_13.jpg",
+            "title": "<strong>7</strong>",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_CM4aVW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_12.jpg",
+            "title": "<strong>8</strong>",
             "link": "",
             "show_badge": false,
             "badge_label": "",
@@ -111,7 +172,12 @@
         "heading_a3gd8z",
         "slide_P6JXXm",
         "slide_ixiWwn",
-        "slide_z7eWWP"
+        "slide_z7eWWP",
+        "slide_Lbeqre",
+        "slide_yz4Lbm",
+        "slide_JFL9iD",
+        "slide_FmGdtp",
+        "slide_CM4aVW"
       ],
       "settings": {
         "color_scheme": "",
