@@ -37,7 +37,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/New_Project_10.jpg",
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 30,
         "image_height": "adapt",
         "desktop_content_position": "bottom-right",
         "show_text_box": false,
