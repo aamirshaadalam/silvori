@@ -11,14 +11,38 @@
   "sections": {
     "image_banner": {
       "type": "image-banner",
+      "blocks": {
+        "heading_xnrLjR": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>A Style For Every Occasion</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_KEVH7A": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://collections",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_xnrLjR",
+        "buttons_KEVH7A"
+      ],
       "settings": {
         "image": "shopify://shop_images/New_Project_10.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "bottom-right",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "desktop_content_alignment": "right",
+        "color_scheme": "scheme-5fd66c63-dc2b-45c3-a3c0-92ec3ac9270e",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
