@@ -12,50 +12,75 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /******************** SLIDER ARROWS BEGIN ************************************/
 
-  const container = document.querySelector('.slider');
+  const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slider-item');
+  const frame = [...slides];
   const totalSlides = slides.length;
-  let currentIndex = 0;
+  let startIndex = 0;
 
   function getSlidesPerView() {
-    const containerWidth = container.offsetWidth;
+    const sliderWidth = slider.offsetWidth;
 
-    if (containerWidth < 480) {
+    if (sliderWidth < 480) {
       return 1;
-    } else if (containerWidth < 768) {
+    } else if (sliderWidth < 768) {
       return 2;
-    } else if (containerWidth < 1024) {
+    } else if (sliderWidth < 1024) {
       return 3;
-    } else if (containerWidth < 1280) {
+    } else if (sliderWidth < 1280) {
       return 4;
     } else {
       return 5;
     }
   }
 
-  function moveSlide(direction) {
-    const slidesPerView = getSlidesPerView();
-    container.innerHTML = '';
-
-    if (direction === 'next') {
-      currentIndex = (currentIndex + slidesPerView) % totalSlides;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - slidesPerView + totalSlides) % totalSlides;
-    }
-
-    const orderedIndices = [];
-    for (let i = 0; i < slidesPerView; i++) {
-      const index = (currentIndex + i) % totalSlides;
-      orderedIndices.push(index);
-    }
-
-    orderedIndices.forEach((index) => {
-      container.appendChild(slides[index]);
-    });
+  function updateSlider(slidesPerView, direction) {
+    const sliderWidth = slider.children[0].offsetWidth * slidesPerView;
+    const position = direction === 'next' ? sliderWidth * -1 : 0;
+    const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
+    slider.innerHTML = '';
+    slider.style.transition = 'none';
+    slider.style.transform = `translateX(${resetPos}px)`;
+    // Force a reflow to ensure the browser registers the initial state
+    void slider.offsetWidth;
+    slider.style.transition = `transform 1s ease-in-out`;
+    slider.append(...frame.map((node) => node.cloneNode(true)));
+    void slider.offsetWidth;
+    slider.style.transform = `translateX(${position}px)`;
   }
 
-  document.querySelector('.slider-controls .prev').addEventListener('click', () => moveSlide('prev'));
-  document.querySelector('.slider-controls .next').addEventListener('click', () => moveSlide('next'));
+  function shiftNext() {
+    const slidesPerView = getSlidesPerView();
+    startIndex = (startIndex + slidesPerView) % totalSlides;
+    for (let i = 0; i < slidesPerView; i++) {
+      const index = (startIndex + i) % totalSlides;
+      frame.push(slides[index]);
+    }
+    const maxCount = 2 * slidesPerView;
+    while (frame.length > maxCount) {
+      frame.shift();
+    }
+    updateSlider(slidesPerView, 'next');
+  }
+
+  function shiftPrevious() {
+    const slidesPerView = getSlidesPerView();
+    startIndex = (startIndex - slidesPerView + totalSlides) % totalSlides;
+    const prevArr = [];
+    for (let i = 0; i < slidesPerView; i++) {
+      const index = (startIndex + i) % totalSlides;
+      prevArr.push(slides[index]);
+      frame.unshift(...prevArr);
+    }
+    const maxCount = 2 * slidesPerView;
+    while (frame.length > maxCount) {
+      frame.pop();
+    }
+    updateSlider(slidesPerView, 'prev');
+  }
+
+  document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
+  document.querySelector('.slider-controls .next').addEventListener('click', shiftNext);
 
   /******************** SLIDER ARROWS END ************************************/
 });
