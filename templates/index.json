@@ -86,7 +86,8 @@
         "slide_ixiWwn": {
           "type": "slide",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/New_Project_20.jpg",
+            "title": "<strong>2</strong>",
             "link": "",
             "show_badge": false,
             "badge_label": "",
