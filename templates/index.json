@@ -70,10 +70,47 @@
             "heading_size": "h2",
             "text_alignment": "start"
           }
+        },
+        "slide_P6JXXm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/New_Project_21.jpg",
+            "title": "<strong>1</strong>",
+            "link": "",
+            "show_badge": true,
+            "badge_label": "<strong>50% OFF</strong>",
+            "badge_bg_color": "#f09949",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_ixiWwn": {
+          "type": "slide",
+          "settings": {
+            "title": "",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
+        },
+        "slide_z7eWWP": {
+          "type": "slide",
+          "settings": {
+            "title": "",
+            "link": "",
+            "show_badge": false,
+            "badge_label": "",
+            "badge_bg_color": "#000000",
+            "badge_txt_color": "#ffffff"
+          }
         }
       },
       "block_order": [
-        "heading_a3gd8z"
+        "heading_a3gd8z",
+        "slide_P6JXXm",
+        "slide_ixiWwn",
+        "slide_z7eWWP"
       ],
       "settings": {
         "color_scheme": "",
