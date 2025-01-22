@@ -84,6 +84,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
   document.querySelector('.slider-controls .next').addEventListener('click', shiftNext);
+  window.addEventListener('resize', throttle(handleOrientationChange, 500));
+
+  function handleOrientationChange() {
+    const slidesPerView = getSlidesPerView();
+    while (frame.length > 0) {
+      frame.pop();
+    }
+    for (let i = 0; i < slidesPerView; i++) {
+      const index = (startIndex + i) % totalSlides;
+      frame.push(slides[index]);
+    }
+    slider.innerHTML = '';
+    slider.append(...frame.map((node) => node.cloneNode(true)));
+    void slider.offsetWidth;
+  }
 
   /******************** SLIDER NAVIGATION END ************************************/
 
