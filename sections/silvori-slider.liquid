@@ -26,7 +26,7 @@
 
 <div class="slider-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
   {%- for block in section.blocks -%}
-    {% if block.type == 'heading' %}
+    {%- if block.type == 'heading' -%}
       {%- unless block.settings.title == blank -%}
         <h2 class="title {{ block.settings.heading_size }} title-{{ block.settings.text_alignment }}">
           {{ block.settings.title }}
@@ -35,32 +35,43 @@
     {%- endif -%}
   {%- endfor -%}
   <div class="slider">
-    {% for block in section.blocks %}
-      {% if block.type == 'slide' %}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'slide' -%}
         <div
           class="slider-item section-{{ section.id }}-alignment"
-          link_url="{{ block.settings.slide_link | default: '#' }}"
+          link_url="{{ block.settings.link | default: '#' }}"
         >
-          {% if block.settings.slide_image %}
-            <img
-              src="{{ block.settings.slide_image | image_url: width: 600 }}"
-              srcset="
-                {{ block.settings.slide_image | image_url: width: 300 }} 300w,
-                {{ block.settings.slide_image | image_url: width: 600 }} 600w,
-                {{ block.settings.slide_image | image_url: width: 1200 }} 1200w
-              "
-              sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
-              alt="{{ block.settings.slide_image.alt }}"
-              width="100%"
-              height="100%"
-            >
-          {% endif %}
-          {% if block.settings.slide_header %}
-            <span>{{ block.settings.slide_header }}</span>
-          {% endif %}
+          {%- if block.settings.image -%}
+            <div class="image-container">
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                srcset="
+                  {{ block.settings.image | image_url: width: 300 }} 300w,
+                  {{ block.settings.image | image_url: width: 600 }} 600w,
+                  {{ block.settings.image | image_url: width: 1200 }} 1200w
+                "
+                sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
+                alt="{{ block.settings.image.alt }}"
+                width="100%"
+                height="100%"
+              >
+              {%- if block.settings.show_badge and block.settings.badge_label -%}
+                {% style %}
+                  .badge-{{ block.id }}-color {
+                    color: rgb({{ block.settings.badge_txt_color.rgb }});
+                    background-color: rgb({{ block.settings.badge_bg_color.rgb }});
+                  }
+                {% endstyle %}
+                <span class="badge badge-{{ block.id }}-color">{{ block.settings.badge_label }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.title -%}
+            <span>{{ block.settings.title }}</span>
+          {%- endif -%}
         </div>
-      {% endif %}
-    {% endfor %}
+      {%- endif -%}
+    {%- endfor -%}
   </div>
   <div class="slider-controls">
     <button class="prev btn-{{ section.id }}-color-scheme">‹</button>
@@ -168,18 +179,41 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "slide_image",
+          "id": "image",
           "label": "Image"
         },
         {
           "type": "inline_richtext",
-          "id": "slide_header",
-          "label": "Header Text"
+          "id": "title",
+          "label": "Title"
         },
         {
           "type": "url",
-          "id": "slide_link",
-          "label": "Link URL"
+          "id": "link",
+          "label": "URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_badge",
+          "label": "Show Badge",
+          "default": false
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge_label",
+          "label": "Badge Label"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg_color",
+          "label": "Badge Background",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "badge_txt_color",
+          "label": "Badge Label",
+          "default": "#ffffff"
         }
       ]
     }

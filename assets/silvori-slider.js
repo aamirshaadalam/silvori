@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const sliderSection = document.querySelector('.slider-section');
+  const sliderControls = document.querySelector('.slider-controls');
+
   function handleSlideItemClick() {
     var link = this.getAttribute('link_url');
     if (link) {
@@ -10,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', handleSlideItemClick.bind(item));
   });
 
-  /******************** SLIDER ARROWS BEGIN ************************************/
+  /******************** SLIDER NAVIGATION BEGIN ************************************/
 
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slider-item');
@@ -82,5 +85,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
   document.querySelector('.slider-controls .next').addEventListener('click', shiftNext);
 
-  /******************** SLIDER ARROWS END ************************************/
+  /******************** SLIDER NAVIGATION END ************************************/
+
+  /******************** SHOW/HIDE SLIDER CONTROLS BEGIN ************************************/
+  sliderControls.style.display = 'none';
+  if (sliderSection.scrollWidth > sliderSection.clientWidth) {
+    sliderControls.style.display = 'flex';
+  }
+  /******************** SHOW/HIDE SLIDER CONTROLS END ************************************/
 });
