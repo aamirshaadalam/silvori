@@ -49,42 +49,6 @@
         "show_text_below": true
       }
     },
-    "rich_text_P6EzRb": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_jhNae3": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>A Style For Every Occasion</strong>",
-            "heading_size": "h1"
-          }
-        },
-        "button_UrVwcP": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_jhNae3",
-        "button_UrVwcP"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-5fd66c63-dc2b-45c3-a3c0-92ec3ac9270e",
-        "full_width": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "silvori_slider_L7qJei": {
       "type": "silvori-slider",
       "blocks": {
@@ -511,7 +475,6 @@
   },
   "order": [
     "image_banner",
-    "rich_text_P6EzRb",
     "silvori_slider_L7qJei",
     "collage_Jnx9wJ",
     "multicolumn_HtWqiq",
