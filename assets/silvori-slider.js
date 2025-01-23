@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const slides = document.querySelectorAll('.slider-item');
   const frame = [...slides];
   const totalSlides = slides.length;
+  // number of slides to transition
+  // will be reset to slides per view if greater than slides per view
+  let transitionCount = 1;
   let startIndex = 0;
   let direction = 'prev';
 
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const slidesPerView = getSlidesPerView();
     const updatedSlides = document.querySelectorAll('.slider-item');
     updatedSlides.forEach((slide, index) => {
-      if ((direction === 'next' && index < slidesPerView) || (direction === 'prev' && index >= slidesPerView)) {
+      if ((direction === 'next' && index < transitionCount) || (direction === 'prev' && index >= slidesPerView)) {
         hideSlide(slide);
       } else {
         showSlide(slide);
@@ -55,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // add/remove slides based on current view of the screen
-  function updateSlider(slidesPerView) {
-    const sliderWidth = slider.children[0].offsetWidth * slidesPerView;
+  function updateSlider() {
+    const sliderWidth = slider.children[0].offsetWidth * transitionCount;
     const position = direction === 'next' ? sliderWidth * -1 : 0;
     const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
     // show all hidden slides before transition
@@ -66,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slider.style.transform = `translateX(${resetPos}px)`;
     // Force a reflow to ensure the browser registers the initial state
     void slider.offsetWidth;
-    slider.style.transition = `transform 1s ease-in-out`;
+    slider.style.transition = `transform 0.5s ease-in-out`;
     slider.append(...frame.map((node) => node.cloneNode(true)));
     void slider.offsetWidth;
     slider.style.transform = `translateX(${position}px)`;
@@ -84,36 +87,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // handle next arrow click
   function shiftNext() {
-    direction = 'next';
     const slidesPerView = getSlidesPerView();
-    startIndex = (startIndex + slidesPerView) % totalSlides;
+    if (transitionCount >= slidesPerView) {
+      transitionCount = slidesPerView;
+    }
+    direction = 'next';
+    startIndex = (startIndex + transitionCount) % totalSlides;
     for (let i = 0; i < slidesPerView; i++) {
       const index = (startIndex + i) % totalSlides;
       frame.push(slides[index]);
     }
-    const maxCount = 2 * slidesPerView;
+    const maxCount = slidesPerView + transitionCount;
     while (frame.length > maxCount) {
       frame.shift();
     }
-    updateSlider(slidesPerView);
+    updateSlider();
   }
 
   // handle previous arrow click
   function shiftPrevious() {
     direction = 'prev';
     const slidesPerView = getSlidesPerView();
-    startIndex = (startIndex - slidesPerView + totalSlides) % totalSlides;
+    if (transitionCount >= slidesPerView) {
+      transitionCount = slidesPerView;
+    }
+    startIndex = (startIndex - transitionCount + totalSlides) % totalSlides;
     const prevArr = [];
     for (let i = 0; i < slidesPerView; i++) {
       const index = (startIndex + i) % totalSlides;
       prevArr.push(slides[index]);
       frame.unshift(...prevArr);
     }
-    const maxCount = 2 * slidesPerView;
+    const maxCount = slidesPerView + transitionCount;
     while (frame.length > maxCount) {
       frame.pop();
     }
-    updateSlider(slidesPerView);
+    updateSlider();
   }
 
   document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
