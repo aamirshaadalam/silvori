@@ -162,7 +162,7 @@
       "settings": {
         "color_scheme": "",
         "title": "<strong>Best Sellers</strong>",
-        "title_size": "h1",
+        "title_size": "h2",
         "title_alignment": "start",
         "card_alignment": "center",
         "padding_top": 36,
