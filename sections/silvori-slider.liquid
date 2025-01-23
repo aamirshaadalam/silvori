@@ -2,7 +2,7 @@
 <script src="{{ 'silvori-slider.js'| asset_url }}" defer></script>
 
 {%- style -%}
-  .section-{{ section.id }}-alignment {
+  .section-{{ section.id }}-card-alignment {
       align-items: {{ section.settings.card_alignment }};
     }
 
@@ -33,7 +33,7 @@
     {%- for block in section.blocks -%}
       {%- if block.type == 'slide' -%}
         <div
-          class="slider-item section-{{ section.id }}-alignment"
+          class="slider-item section-{{ section.id }}-card-alignment"
           link_url="{{ block.settings.link | default: '#' }}"
         >
           {%- if block.settings.image -%}
