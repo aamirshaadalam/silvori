@@ -11,11 +11,6 @@
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
-    .btn-{{ section.id }}-color-scheme {
-      color: {{ section.settings.color_scheme.settings.button_label }};
-      background-color: {{ section.settings.color_scheme.settings.button }};
-    }
-
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
@@ -73,6 +68,11 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
+  {% style %}
+    .btn-{{ section.id }}-color-scheme {
+      color: {{ section.settings.color_scheme.settings.button }};
+    }
+  {% endstyle %}
   <div class="slider-controls">
     <button class="prev btn-{{ section.id }}-color-scheme">‹</button>
     <button class="next btn-{{ section.id }}-color-scheme">›</button>

@@ -20,7 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const frame = [...slides];
   const totalSlides = slides.length;
   let startIndex = 0;
+  let direction = 'prev';
 
+  function setSlideVisibility() {
+    const slidesPerView = getSlidesPerView();
+    const updatedSlides = document.querySelectorAll('.slider-item');
+    updatedSlides.forEach((slide, index) => {
+      if ((direction === 'next' && index < slidesPerView) || (direction === 'prev' && index >= slidesPerView)) {
+        hideSlide(slide);
+      } else {
+        showSlide(slide);
+      }
+    });
+  }
+
+  // set visibility on initial load
+  setSlideVisibility();
+
+  // get number of visible slides based on screen width
   function getSlidesPerView() {
     const sliderWidth = slider.offsetWidth;
 
@@ -37,10 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function updateSlider(slidesPerView, direction) {
+  // add/remove slides based on current view of the screen
+  function updateSlider(slidesPerView) {
     const sliderWidth = slider.children[0].offsetWidth * slidesPerView;
     const position = direction === 'next' ? sliderWidth * -1 : 0;
     const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
+    // show all hidden slides before transition
+    frame.forEach((slide) => showSlide(slide));
     slider.innerHTML = '';
     slider.style.transition = 'none';
     slider.style.transform = `translateX(${resetPos}px)`;
@@ -52,7 +72,19 @@ document.addEventListener('DOMContentLoaded', function () {
     slider.style.transform = `translateX(${position}px)`;
   }
 
+  function hideSlide(slide) {
+    slide.style.opacity = '0'; // Hide partially visible slides
+    slide.style.pointerEvents = 'none'; // Disable interactions
+  }
+
+  function showSlide(slide) {
+    slide.style.opacity = '1'; // Hide partially visible slides
+    slide.style.pointerEvents = 'auto'; // Disable interactions
+  }
+
+  // handle next arrow click
   function shiftNext() {
+    direction = 'next';
     const slidesPerView = getSlidesPerView();
     startIndex = (startIndex + slidesPerView) % totalSlides;
     for (let i = 0; i < slidesPerView; i++) {
@@ -63,10 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
     while (frame.length > maxCount) {
       frame.shift();
     }
-    updateSlider(slidesPerView, 'next');
+    updateSlider(slidesPerView);
   }
 
+  // handle previous arrow click
   function shiftPrevious() {
+    direction = 'prev';
     const slidesPerView = getSlidesPerView();
     startIndex = (startIndex - slidesPerView + totalSlides) % totalSlides;
     const prevArr = [];
@@ -79,13 +113,15 @@ document.addEventListener('DOMContentLoaded', function () {
     while (frame.length > maxCount) {
       frame.pop();
     }
-    updateSlider(slidesPerView, 'prev');
+    updateSlider(slidesPerView);
   }
 
   document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
   document.querySelector('.slider-controls .next').addEventListener('click', shiftNext);
   window.addEventListener('resize', throttle(handleOrientationChange, 500));
+  slider.addEventListener('transitionend', setSlideVisibility);
 
+  // update slider when screen resized or device orientation changes
   function handleOrientationChange() {
     const slidesPerView = getSlidesPerView();
     while (frame.length > 0) {
