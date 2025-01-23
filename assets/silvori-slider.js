@@ -19,9 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const slides = document.querySelectorAll('.slider-item');
   const frame = [...slides];
   const totalSlides = slides.length;
+  const transitionTime = 0.1;
   // number of slides to transition
   // will be reset to slides per view if greater than slides per view
-  let transitionCount = 1;
+  let slidesToTransition = 1;
   let startIndex = 0;
   let direction = 'prev';
 
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const slidesPerView = getSlidesPerView();
     const updatedSlides = document.querySelectorAll('.slider-item');
     updatedSlides.forEach((slide, index) => {
-      if ((direction === 'next' && index < transitionCount) || (direction === 'prev' && index >= slidesPerView)) {
+      if ((direction === 'next' && index < slidesToTransition) || (direction === 'prev' && index >= slidesPerView)) {
         hideSlide(slide);
       } else {
         showSlide(slide);
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // add/remove slides based on current view of the screen
   function updateSlider() {
-    const sliderWidth = slider.children[0].offsetWidth * transitionCount;
+    const sliderWidth = slider.children[0].offsetWidth * slidesToTransition;
     const position = direction === 'next' ? sliderWidth * -1 : 0;
     const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
     // show all hidden slides before transition
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slider.style.transform = `translateX(${resetPos}px)`;
     // Force a reflow to ensure the browser registers the initial state
     void slider.offsetWidth;
-    slider.style.transition = `transform 0.5s ease-in-out`;
+    slider.style.transition = `transform ${transitionTime}s ease-in-out`;
     slider.append(...frame.map((node) => node.cloneNode(true)));
     void slider.offsetWidth;
     slider.style.transform = `translateX(${position}px)`;
@@ -88,16 +89,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // handle next arrow click
   function shiftNext() {
     const slidesPerView = getSlidesPerView();
-    if (transitionCount >= slidesPerView) {
-      transitionCount = slidesPerView;
+    if (slidesToTransition >= slidesPerView) {
+      slidesToTransition = slidesPerView;
     }
     direction = 'next';
-    startIndex = (startIndex + transitionCount) % totalSlides;
+    startIndex = (startIndex + slidesToTransition) % totalSlides;
     for (let i = 0; i < slidesPerView; i++) {
       const index = (startIndex + i) % totalSlides;
       frame.push(slides[index]);
     }
-    const maxCount = slidesPerView + transitionCount;
+    const maxCount = slidesPerView + slidesToTransition;
     while (frame.length > maxCount) {
       frame.shift();
     }
@@ -108,17 +109,17 @@ document.addEventListener('DOMContentLoaded', function () {
   function shiftPrevious() {
     direction = 'prev';
     const slidesPerView = getSlidesPerView();
-    if (transitionCount >= slidesPerView) {
-      transitionCount = slidesPerView;
+    if (slidesToTransition >= slidesPerView) {
+      slidesToTransition = slidesPerView;
     }
-    startIndex = (startIndex - transitionCount + totalSlides) % totalSlides;
+    startIndex = (startIndex - slidesToTransition + totalSlides) % totalSlides;
     const prevArr = [];
     for (let i = 0; i < slidesPerView; i++) {
       const index = (startIndex + i) % totalSlides;
       prevArr.push(slides[index]);
       frame.unshift(...prevArr);
     }
-    const maxCount = slidesPerView + transitionCount;
+    const maxCount = slidesPerView + slidesToTransition;
     while (frame.length > maxCount) {
       frame.pop();
     }
