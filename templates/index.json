@@ -52,14 +52,6 @@
     "silvori_slider_L7qJei": {
       "type": "silvori-slider",
       "blocks": {
-        "heading_a3gd8z": {
-          "type": "heading",
-          "settings": {
-            "title": "<strong>Find Your Favorites</strong>",
-            "heading_size": "h2",
-            "text_alignment": "start"
-          }
-        },
         "slide_P6JXXm": {
           "type": "slide",
           "settings": {
@@ -158,7 +150,6 @@
         }
       },
       "block_order": [
-        "heading_a3gd8z",
         "slide_P6JXXm",
         "slide_ixiWwn",
         "slide_z7eWWP",
@@ -170,6 +161,9 @@
       ],
       "settings": {
         "color_scheme": "",
+        "title": "<strong>Best Sellers</strong>",
+        "title_size": "h1",
+        "title_alignment": "start",
         "card_alignment": "center",
         "padding_top": 36,
         "padding_bottom": 36
