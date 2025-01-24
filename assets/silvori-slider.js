@@ -1,7 +1,53 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const sliderSection = document.querySelector(`#slider-section-${sectionId}`);
-  const previousBtn = document.querySelector(`#btn-prev-${sectionId}`);
-  const nextBtn = document.querySelector(`#btn-next-${sectionId}`);
+  const previousBtn = getPreviousButton();
+  const nextBtn = getNextButton();
+  const slider = getSlider();
+  const slides = getCurrentSlides();
+  const frame = [...slides];
+  const totalSlides = slides.length;
+  const transitionTime = 0.1;
+  let slidesToTransition = 1;
+  let startIndex = 0;
+  let direction = 'prev';
+
+  init();
+
+  function init() {
+    attachEventListenersToSlides();
+    toggleSlideVisibility();
+    toggleSliderControlVisibility();
+  }
+
+  function getSlider() {
+    const slider = document.querySelector(`#slider-${sectionId}`);
+    if (!slider.dataset.has_transitionend_listener) {
+      slider.addEventListener('transitionend', toggleSlideVisibility);
+      slider.dataset.has_transitionend_listener = true;
+    }
+    return slider;
+  }
+
+  function getPreviousButton() {
+    const btn = document.querySelector(`#btn-prev-${sectionId}`);
+    if (!btn.dataset.has_click_listener) {
+      btn.addEventListener('click', handlePreviousClick);
+      btn.dataset.has_click_listener = true;
+    }
+    return btn;
+  }
+
+  function getNextButton() {
+    const btn = document.querySelector(`#btn-next-${sectionId}`);
+    if (!btn.dataset.has_click_listener) {
+      btn.addEventListener('click', handleNextClick);
+      btn.dataset.has_click_listener = true;
+    }
+    return btn;
+  }
+
+  function getCurrentSlides() {
+    return document.querySelectorAll(`#slider-item-${sectionId}`);
+  }
 
   function handleSlideClick() {
     var link = this.dataset.link;
@@ -10,39 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function attachEventListeners() {
-    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (slide) {
-      slide.addEventListener('click', handleSlideClick.bind(slide));
-    });
+  function getVisibleSlides() {
+    const sliderWidth = slider.offsetWidth;
+    if (sliderWidth < 640) return 1;
+    if (sliderWidth < 768) return 2;
+    if (sliderWidth < 1024) return 3;
+    if (sliderWidth < 1280) return 4;
+    return 5;
   }
 
-  function removeEventListeners() {
-    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (slide) {
-      slide.removeEventListener('click', handleSlideClick.bind(slide));
-    });
-  }
-
-  // attach event listeners on initial load
-  attachEventListeners();
-
-  /******************** SLIDER NAVIGATION BEGIN ************************************/
-
-  const slider = document.querySelector(`#slider-${sectionId}`);
-  const slides = document.querySelectorAll(`#slider-item-${sectionId}`);
-  const frame = [...slides];
-  const totalSlides = slides.length;
-  const transitionTime = 0.1;
-  // number of slides to transition
-  // will be reset to slides per view if greater than slides per view
-  let slidesToTransition = 1;
-  let startIndex = 0;
-  let direction = 'prev';
-
-  function setSlideVisibility() {
-    const slidesPerView = getSlidesPerView();
-    const updatedSlides = document.querySelectorAll(`#slider-item-${sectionId}`);
+  function toggleSlideVisibility() {
+    const visibleSlides = getVisibleSlides();
+    const updatedSlides = getCurrentSlides();
     updatedSlides.forEach((slide, index) => {
-      if ((direction === 'next' && index < slidesToTransition) || (direction === 'prev' && index >= slidesPerView)) {
+      if ((direction === 'next' && index < slidesToTransition) || (direction === 'prev' && index >= visibleSlides)) {
         hideSlide(slide);
       } else {
         showSlide(slide);
@@ -50,40 +77,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // set visibility on initial load
-  setSlideVisibility();
-
-  // get number of visible slides based on screen width
-  function getSlidesPerView() {
-    const sliderWidth = slider.offsetWidth;
-
-    if (sliderWidth < 480) {
-      return 1;
-    } else if (sliderWidth < 768) {
-      return 2;
-    } else if (sliderWidth < 1024) {
-      return 3;
-    } else if (sliderWidth < 1280) {
-      return 4;
-    } else {
-      return 5;
-    }
-  }
-
-  // add/remove slides based on current view of the screen
   function updateSlider() {
     const transitionWidth = slider.children[0].offsetWidth * slidesToTransition;
     const endPos = direction === 'next' ? transitionWidth * -1 : 0;
     const startPos = direction === 'next' ? 0 : transitionWidth * -1;
-    frame.forEach((slide) => showSlide(slide)); // show all hidden slides before transition
-    removeEventListeners();
+    frame.forEach((slide) => showSlide(slide));
+    removeEventListenersFromSlides();
     slider.innerHTML = '';
     slider.style.transition = 'none';
     slider.style.transform = `translateX(${startPos}px)`;
-    void slider.offsetWidth; // Force a reflow to ensure the browser registers the initial state
+    void slider.offsetWidth; // Force a reflow
     slider.style.transition = `transform ${transitionTime}s ease-in-out`;
     slider.append(...frame.map((node) => node.cloneNode(true)));
-    attachEventListeners();
+    attachEventListenersToSlides();
     void slider.offsetWidth; // Force a reflow
     slider.style.transform = `translateX(${endPos}px)`;
   }
@@ -98,58 +104,62 @@ document.addEventListener('DOMContentLoaded', function () {
     slide.style.pointerEvents = 'auto';
   }
 
-  // handle next arrow click
   function handleNextClick() {
-    const slidesPerView = getSlidesPerView();
-    if (slidesToTransition >= slidesPerView) {
-      slidesToTransition = slidesPerView;
+    const visibleSlides = getVisibleSlides();
+    if (slidesToTransition >= visibleSlides) {
+      slidesToTransition = visibleSlides;
     }
     direction = 'next';
     startIndex = (startIndex + slidesToTransition) % totalSlides;
-    for (let i = 0; i < slidesPerView; i++) {
+    for (let i = 0; i < visibleSlides; i++) {
       const index = (startIndex + i) % totalSlides;
       frame.push(slides[index]);
     }
-    const maxCount = slidesPerView + slidesToTransition;
+    const maxCount = visibleSlides + slidesToTransition;
     if (frame.length > maxCount) {
       frame.splice(0, frame.length - maxCount);
     }
     updateSlider();
   }
 
-  // handle previous arrow click
   function handlePreviousClick() {
     direction = 'prev';
-    const slidesPerView = getSlidesPerView();
-    if (slidesToTransition >= slidesPerView) {
-      slidesToTransition = slidesPerView;
+    const visibleSlides = getVisibleSlides();
+    if (slidesToTransition >= visibleSlides) {
+      slidesToTransition = visibleSlides;
     }
     startIndex = (startIndex - slidesToTransition + totalSlides) % totalSlides;
     const prevArr = [];
-    for (let i = 0; i < slidesPerView; i++) {
+    for (let i = 0; i < visibleSlides; i++) {
       const index = (startIndex + i) % totalSlides;
       prevArr.push(slides[index]);
     }
     frame.unshift(...prevArr);
-    const maxCount = slidesPerView + slidesToTransition;
+    const maxCount = visibleSlides + slidesToTransition;
     frame.splice(maxCount);
     updateSlider();
   }
 
-  previousBtn.addEventListener('click', handlePreviousClick);
-  nextBtn.addEventListener('click', handleNextClick);
-  slider.addEventListener('transitionend', setSlideVisibility);
-
-  /******************** SLIDER NAVIGATION END ************************************/
-
-  /******************** SHOW/HIDE SLIDER CONTROLS BEGIN ************************************/
-
-  if (sliderSection.scrollWidth > sliderSection.clientWidth) {
-    previousBtn.classList.remove('hidden');
-    nextBtn.classList.remove('hidden');
-  } else {
-    previousBtn.classList.add('hidden');
-    nextBtn.classList.add('hidden');
+  function attachEventListenersToSlides() {
+    getCurrentSlides().forEach(function (slide) {
+      slide.addEventListener('click', handleSlideClick.bind(slide));
+    });
   }
-  /******************** SHOW/HIDE SLIDER CONTROLS END ************************************/
+
+  function removeEventListenersFromSlides() {
+    getCurrentSlides().forEach(function (slide) {
+      slide.removeEventListener('click', handleSlideClick.bind(slide));
+    });
+  }
+
+  function toggleSliderControlVisibility() {
+    const visibleSlides = getVisibleSlides();
+    if (visibleSlides < totalSlides) {
+      previousBtn.style.display = 'block';
+      nextBtn.style.display = 'block';
+    } else {
+      previousBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+    }
+  }
 });
