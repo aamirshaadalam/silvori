@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const sliderSection = document.querySelector(`#slider-section-${sectionId}`);
-  const sliderControls = document.querySelector(`#slider-controls-${sectionId}`);
+  const previousBtn = document.querySelector(`#btn-prev-${sectionId}`);
+  const nextBtn = document.querySelector(`#btn-next-${sectionId}`);
 
   function handleSlideItemClick() {
     var link = this.getAttribute('link_url');
@@ -138,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSlider();
   }
 
-  document.querySelector(`#btn-prev-${sectionId}`).addEventListener('click', shiftPrevious);
-  document.querySelector(`#btn-next-${sectionId}`).addEventListener('click', shiftNext);
+  previousBtn.addEventListener('click', shiftPrevious);
+  nextBtn.addEventListener('click', shiftNext);
   window.addEventListener('resize', throttle(handleOrientationChange, 500));
   slider.addEventListener('transitionend', setSlideVisibility);
 
@@ -161,9 +162,13 @@ document.addEventListener('DOMContentLoaded', function () {
   /******************** SLIDER NAVIGATION END ************************************/
 
   /******************** SHOW/HIDE SLIDER CONTROLS BEGIN ************************************/
-  sliderControls.style.display = 'none';
+
   if (sliderSection.scrollWidth > sliderSection.clientWidth) {
-    sliderControls.style.display = 'flex';
+    previousBtn.classList.remove('hidden');
+    nextBtn.classList.remove('hidden');
+  } else {
+    previousBtn.classList.add('hidden');
+    nextBtn.classList.add('hidden');
   }
   /******************** SHOW/HIDE SLIDER CONTROLS END ************************************/
 });
