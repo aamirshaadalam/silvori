@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const sliderSection = document.querySelector('.slider-section');
-  const sliderControls = document.querySelector('.slider-controls');
+  const sliderSection = document.querySelector(`#slider-section-${sectionId}`);
+  const sliderControls = document.querySelector(`#slider-controls-${sectionId}`);
 
   function handleSlideItemClick() {
     var link = this.getAttribute('link_url');
@@ -9,14 +9,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  document.querySelectorAll('.slider-item').forEach(function (item) {
-    item.addEventListener('click', handleSlideItemClick.bind(item));
-  });
+  function attachEventListeners() {
+    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (item) {
+      item.addEventListener('click', handleSlideItemClick.bind(item));
+    });
+  }
+
+  function removeEventListeners() {
+    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (item) {
+      item.removeEventListener('click', handleSlideItemClick.bind(item));
+    });
+  }
+
+  attachEventListeners();
 
   /******************** SLIDER NAVIGATION BEGIN ************************************/
 
-  const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slider-item');
+  const slider = document.querySelector(`#slider-${sectionId}`);
+  const slides = document.querySelectorAll(`#slider-item-${sectionId}`);
   const frame = [...slides];
   const totalSlides = slides.length;
   const transitionTime = 0.1;
@@ -28,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function setSlideVisibility() {
     const slidesPerView = getSlidesPerView();
-    const updatedSlides = document.querySelectorAll('.slider-item');
+    const updatedSlides = document.querySelectorAll(`#slider-item-${sectionId}`);
     updatedSlides.forEach((slide, index) => {
       if ((direction === 'next' && index < slidesToTransition) || (direction === 'prev' && index >= slidesPerView)) {
         hideSlide(slide);
@@ -65,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
     // show all hidden slides before transition
     frame.forEach((slide) => showSlide(slide));
+    removeEventListeners();
     slider.innerHTML = '';
     slider.style.transition = 'none';
     slider.style.transform = `translateX(${resetPos}px)`;
@@ -72,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     void slider.offsetWidth;
     slider.style.transition = `transform ${transitionTime}s ease-in-out`;
     slider.append(...frame.map((node) => node.cloneNode(true)));
+    attachEventListeners();
     void slider.offsetWidth;
     slider.style.transform = `translateX(${position}px)`;
   }
@@ -126,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSlider();
   }
 
-  document.querySelector('.slider-controls .prev').addEventListener('click', shiftPrevious);
-  document.querySelector('.slider-controls .next').addEventListener('click', shiftNext);
+  document.querySelector(`#btn-prev-${sectionId}`).addEventListener('click', shiftPrevious);
+  document.querySelector(`#btn-next-${sectionId}`).addEventListener('click', shiftNext);
   window.addEventListener('resize', throttle(handleOrientationChange, 500));
   slider.addEventListener('transitionend', setSlideVisibility);
 
