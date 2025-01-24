@@ -92,36 +92,34 @@
   </div>
   {% comment %} SLIDER END {% endcomment %}
   {% comment %} SLIDER CONTROLS START {% endcomment %}
-  <div id="slider-controls-{{ section.id }}" class="flex absolute top-[55%] w-full justify-between -translate-y-1/2">
-    <button
-      id="btn-prev-{{ section.id }}"
-      class="border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+  <button
+    id="btn-prev-{{ section.id }}"
+    class="absolute top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2.5"
+      stroke="{{ section.settings.color_scheme.settings.button }}"
+      class="size-10 opacity-80"
     >
-      <svg
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2.5"
-        stroke="{{ section.settings.color_scheme.settings.button }}"
-        class="size-10 opacity-80"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-      </svg>
-    </button>
-    <button
-      id="btn-next-{{ section.id }}"
-      class="border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+    </svg>
+  </button>
+  <button
+    id="btn-next-{{ section.id }}"
+    class="absolute right-0 top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2.5"
+      stroke="{{ section.settings.color_scheme.settings.button }}"
+      class="size-10 opacity-80"
     >
-      <svg
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2.5"
-        stroke="{{ section.settings.color_scheme.settings.button }}"
-        class="size-10 opacity-80"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
-    </button>
-  </div>
+      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+    </svg>
+  </button>
   {% comment %} SLIDER CONTROLS END {% endcomment %}
 </div>
 {% comment %} SLIDER SECTION END {% endcomment %}

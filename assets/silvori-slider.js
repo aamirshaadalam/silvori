@@ -89,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function hideSlide(slide) {
-    slide.style.opacity = '0'; // Hide partially visible slides
-    slide.style.pointerEvents = 'none'; // Disable interactions
+    slide.style.opacity = '0';
+    slide.style.pointerEvents = 'none';
   }
 
   function showSlide(slide) {
-    slide.style.opacity = '1'; // Hide partially visible slides
-    slide.style.pointerEvents = 'auto'; // Disable interactions
+    slide.style.opacity = '1';
+    slide.style.pointerEvents = 'auto';
   }
 
   // handle next arrow click
