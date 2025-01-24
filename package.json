@@ -1,0 +1,16 @@
+{
+  "name": "silvori",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./assets/silvori-application.css --watch",
+    "dev": "shopify theme dev --store closet-cove-aamir "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
