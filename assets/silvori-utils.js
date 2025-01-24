@@ -1,22 +1,25 @@
 // Throttle function
-function throttle(func, limit) {
-  let lastFunc;
-  let lastRan;
-
-  return function (...args) {
-    const context = this;
-
-    if (!lastRan) {
-      func.apply(context, args);
-      lastRan = Date.now();
+function throttle(func, delay = 500) {
+  let shouldWait = false;
+  let waitingArgs;
+  const timeoutFunc = () => {
+    if (waitingArgs == null) {
+      shouldWait = false;
     } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if (Date.now() - lastRan >= limit) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
+      func(...waitingArgs);
+      waitingArgs = null;
+      setTimeout(timeoutFunc, delay);
     }
+  };
+
+  return (...args) => {
+    if (shouldWait) {
+      waitingArgs = args;
+      return;
+    }
+
+    func(...args);
+    shouldWait = true;
+    setTimeout(timeoutFunc, delay);
   };
 }

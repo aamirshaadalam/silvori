@@ -3,25 +3,26 @@ document.addEventListener('DOMContentLoaded', function () {
   const previousBtn = document.querySelector(`#btn-prev-${sectionId}`);
   const nextBtn = document.querySelector(`#btn-next-${sectionId}`);
 
-  function handleSlideItemClick() {
-    var link = this.getAttribute('link_url');
+  function handleSlideClick() {
+    var link = this.dataset.link;
     if (link) {
       window.location.href = link;
     }
   }
 
   function attachEventListeners() {
-    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (item) {
-      item.addEventListener('click', handleSlideItemClick.bind(item));
+    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (slide) {
+      slide.addEventListener('click', handleSlideClick.bind(slide));
     });
   }
 
   function removeEventListeners() {
-    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (item) {
-      item.removeEventListener('click', handleSlideItemClick.bind(item));
+    document.querySelectorAll(`#slider-item-${sectionId}`).forEach(function (slide) {
+      slide.removeEventListener('click', handleSlideClick.bind(slide));
     });
   }
 
+  // attach event listeners on initial load
   attachEventListeners();
 
   /******************** SLIDER NAVIGATION BEGIN ************************************/
@@ -71,22 +72,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // add/remove slides based on current view of the screen
   function updateSlider() {
-    const sliderWidth = slider.children[0].offsetWidth * slidesToTransition;
-    const position = direction === 'next' ? sliderWidth * -1 : 0;
-    const resetPos = direction === 'next' ? 0 : sliderWidth * -1;
-    // show all hidden slides before transition
-    frame.forEach((slide) => showSlide(slide));
+    const transitionWidth = slider.children[0].offsetWidth * slidesToTransition;
+    const endPos = direction === 'next' ? transitionWidth * -1 : 0;
+    const startPos = direction === 'next' ? 0 : transitionWidth * -1;
+    frame.forEach((slide) => showSlide(slide)); // show all hidden slides before transition
     removeEventListeners();
     slider.innerHTML = '';
     slider.style.transition = 'none';
-    slider.style.transform = `translateX(${resetPos}px)`;
-    // Force a reflow to ensure the browser registers the initial state
-    void slider.offsetWidth;
+    slider.style.transform = `translateX(${startPos}px)`;
+    void slider.offsetWidth; // Force a reflow to ensure the browser registers the initial state
     slider.style.transition = `transform ${transitionTime}s ease-in-out`;
     slider.append(...frame.map((node) => node.cloneNode(true)));
     attachEventListeners();
-    void slider.offsetWidth;
-    slider.style.transform = `translateX(${position}px)`;
+    void slider.offsetWidth; // Force a reflow
+    slider.style.transform = `translateX(${endPos}px)`;
   }
 
   function hideSlide(slide) {
@@ -100,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // handle next arrow click
-  function shiftNext() {
+  function handleNextClick() {
     const slidesPerView = getSlidesPerView();
     if (slidesToTransition >= slidesPerView) {
       slidesToTransition = slidesPerView;
@@ -112,14 +111,14 @@ document.addEventListener('DOMContentLoaded', function () {
       frame.push(slides[index]);
     }
     const maxCount = slidesPerView + slidesToTransition;
-    while (frame.length > maxCount) {
-      frame.shift();
+    if (frame.length > maxCount) {
+      frame.splice(0, frame.length - maxCount);
     }
     updateSlider();
   }
 
   // handle previous arrow click
-  function shiftPrevious() {
+  function handlePreviousClick() {
     direction = 'prev';
     const slidesPerView = getSlidesPerView();
     if (slidesToTransition >= slidesPerView) {
@@ -130,34 +129,16 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < slidesPerView; i++) {
       const index = (startIndex + i) % totalSlides;
       prevArr.push(slides[index]);
-      frame.unshift(...prevArr);
     }
+    frame.unshift(...prevArr);
     const maxCount = slidesPerView + slidesToTransition;
-    while (frame.length > maxCount) {
-      frame.pop();
-    }
+    frame.splice(maxCount);
     updateSlider();
   }
 
-  previousBtn.addEventListener('click', shiftPrevious);
-  nextBtn.addEventListener('click', shiftNext);
-  window.addEventListener('resize', throttle(handleOrientationChange, 500));
+  previousBtn.addEventListener('click', handlePreviousClick);
+  nextBtn.addEventListener('click', handleNextClick);
   slider.addEventListener('transitionend', setSlideVisibility);
-
-  // update slider when screen resized or device orientation changes
-  function handleOrientationChange() {
-    const slidesPerView = getSlidesPerView();
-    while (frame.length > 0) {
-      frame.pop();
-    }
-    for (let i = 0; i < slidesPerView; i++) {
-      const index = (startIndex + i) % totalSlides;
-      frame.push(slides[index]);
-    }
-    slider.innerHTML = '';
-    slider.append(...frame.map((node) => node.cloneNode(true)));
-    void slider.offsetWidth;
-  }
 
   /******************** SLIDER NAVIGATION END ************************************/
 
