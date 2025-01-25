@@ -35,6 +35,7 @@
         "heading_xnrLjR",
         "buttons_KEVH7A"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/New_Project_10.jpg",
         "image_overlay_opacity": 30,
@@ -195,6 +196,7 @@
         "product_JabhFk",
         "collection_wpXyQL"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Multimedia collage",
         "heading_size": "h1",
