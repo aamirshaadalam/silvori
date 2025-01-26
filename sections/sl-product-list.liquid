@@ -31,31 +31,50 @@
   id="slider-section-{{ section.id }}"
   class="relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
 >
+  {% comment %} heading {% endcomment %}
   {%- unless section.settings.title == blank -%}
     <h2 class="my-12 mx-24 {{ section.settings.title_size }} title-align-{{ section.id }}">
       {{ section.settings.title }}
     </h2>
   {%- endunless -%}
-
-  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center">
+  {% comment %} slide container {% endcomment %}
+  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center ">
     {%- for product in section.settings.collection.products -%}
+      {% comment %} slide {% endcomment %}
       <div
         id="slider-item-{{ section.id }}"
-        class="flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
+        class="hover:underline flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
         data-link="{{ product.url | default: '#' }}"
       >
-        {%- if product.featured_image -%}
+        {%- if product.images.size > 0 -%}
+          {% assign featured_image = product.featured_image %}
+          {% assign alt_image = product.images[1] | default: product.featured_image %}
           <div class="relative flex flex-col w-full aspect-3/4 shadow-md rounded-sm">
+            {% comment %} main image {% endcomment %}
             <img
-              class="object-cover w-full h-full rounded-sm"
-              src="{{ product.featured_image | image_url: width: 600 }}"
+              class="absolute object-cover w-full h-full transition-opacity opacity-100 hover:opacity-0"
+              src="{{ featured_image | image_url: width: 600 }}"
               srcset="
-                {{ product.featured_image | image_url: width: 300 }} 300w,
-                {{ product.featured_image | image_url: width: 600 }} 600w,
-                {{ product.featured_image | image_url: width: 1200 }} 1200w
+                {{ featured_image | image_url: width: 300 }} 300w,
+                {{ featured_image | image_url: width: 600 }} 600w,
+                {{ featured_image | image_url: width: 1200 }} 1200w
               "
               sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
-              alt="{{ product.images[1] }}"
+              alt="{{ product.title }}"
+              width="100%"
+              height="100%"
+            >
+            {% comment %} alt image {% endcomment %}
+            <img
+              class="absolute object-cover w-full h-full transition-opacity opacity-0 hover:opacity-100"
+              src="{{ alt_image | image_url: width: 600 }}"
+              srcset="
+                {{ alt_image | image_url: width: 300 }} 300w,
+                {{ alt_image | image_url: width: 600 }} 600w,
+                {{ alt_image | image_url: width: 1200 }} 1200w
+              "
+              sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
+              alt="{{ product.title }}"
               width="100%"
               height="100%"
             >
@@ -76,10 +95,11 @@
             {% endcomment %}
           </div>
         {%- endif -%}
-        <span class="p-3 text-xl">{{ forloop.index }}</span>
+        <span class="p-4 text-xl font-semibold">{{ product.title }}</span>
       </div>
     {%- endfor -%}
   </div>
+  {% comment %} navigation buttons {% endcomment %}
   <button
     id="btn-prev-{{ section.id }}"
     class="absolute top-[50%] border-none left-0 pl-12 pr-6 py-6 cursor-pointer btn-{{ section.id }}-color-scheme"
