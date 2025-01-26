@@ -165,7 +165,7 @@
     "sl_product_list_YQXPfp": {
       "type": "sl-product-list",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "collection": "frontpage",
         "title": "<strong>Featured Products</strong>",
         "title_size": "h1",
