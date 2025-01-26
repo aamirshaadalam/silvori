@@ -7,24 +7,105 @@ class SlProductList {
     this.slides = this.getCurrentSlides();
     this.frame = [...this.slides];
     this.totalSlides = this.slides.length;
+    this.visibleSlides = 5;
     this.transitionTime = 0.1;
     this.slidesToTransition = 1;
-    this.startIndex = 0;
-    this.direction = 'prev';
+    this.leftIndex = 0;
+    this.rightIndex = this.visibleSlides - 1;
+    // always use setDirection function instead of
+    // directly modifying 'direction' and 'prevDirection'
+    this.direction = 'none';
+    this.prevDirection = 'none';
+    this.gapInRem = 1;
     this.init();
   }
 
   init() {
-    this.attachEventListenersToSlides();
-    this.toggleSlideVisibility(this);
+    // this.attachEventListenersToSlides();
     this.toggleSliderControlVisibility();
+    this.setSlideWidth();
+    this.loadFrame();
+    this.hideInvisibleSlides(this);
+  }
+
+  setDirection(dir) {
+    this.prevDirection = this.direction;
+    this.direction = dir;
+  }
+
+  setSlideWidth() {
+    const btnWidth = this.previousBtn.offsetWidth;
+    const totalWidth = this.slider.offsetWidth - 2 * btnWidth - remToPx(1) * (this.visibleSlides - 1);
+    const slideWidth = totalWidth / this.visibleSlides;
+    this.slides.forEach((slide) => (slide.style.width = `${slideWidth}px`));
+  }
+
+  loadFrame() {
+    this.frame.splice(this.visibleSlides);
+    this.slider.innerHTML = '';
+    this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
+  }
+
+  // set left and right index of the visible slides
+  setIndices(dir) {
+    if (dir === 'next') {
+      this.leftIndex = (this.leftIndex + this.slidesToTransition) % this.totalSlides;
+      this.rightIndex = (this.rightIndex + this.slidesToTransition) % this.totalSlides;
+    } else if (dir === 'prev') {
+      this.leftIndex = (this.leftIndex - this.slidesToTransition + this.totalSlides) % this.totalSlides;
+      this.rightIndex = (this.rightIndex - this.slidesToTransition + this.totalSlides) % this.totalSlides;
+    }
+  }
+
+  // remove invisible slides
+  trimFrame() {
+    if (this.frame.length > this.visibleSlides) {
+      if (this.prevDirection === 'next') {
+        this.frame.splice(0, 2 * this.slidesToTransition);
+      } else if (this.prevDirection === 'prev') {
+        this.frame.splice(this.visibleSlides, 2 * this.slidesToTransition);
+      }
+    }
+  }
+
+  // handle slider navigation
+  handleNavigation(self, dir) {
+    self.setDirection(dir);
+    self.trimFrame();
+    let lIndex = self.leftIndex;
+    let rIndex = self.rightIndex;
+    self.setIndices(dir);
+
+    for (let i = 0; i < self.slidesToTransition; i++) {
+      lIndex = lIndex - 1;
+      rIndex = rIndex + 1;
+      if (lIndex < 0) lIndex = self.totalSlides - 1;
+      if (rIndex > self.totalSlides - 1) rIndex = 0;
+      self.frame.splice(0, 0, self.slides[lIndex]);
+      self.frame.splice(self.frame.length, 0, self.slides[rIndex]);
+    }
+
+    self.updateSlider();
+  }
+
+  updateSlider() {
+    const transitionWidth = (this.slider.children[0].offsetWidth + remToPx(this.gapInRem)) * this.slidesToTransition;
+    const endPos = this.direction === 'next' ? transitionWidth * -1 : transitionWidth;
+    this.slider.innerHTML = '';
+    this.slider.style.transition = 'none';
+    this.slider.style.transform = `translateX(0px)`;
+    void this.slider.offsetWidth; // Force a reflow
+    this.slider.style.transition = `transform ${this.transitionTime}s ease-in-out`;
+    this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
+    void this.slider.offsetWidth; // Force a reflow
+    this.slider.style.transform = `translateX(${endPos}px)`;
   }
 
   getSlider() {
     const self = this;
     const slider = document.querySelector(`#slider-${self.sectionId}`);
     if (!slider.dataset.has_transitionend_listener) {
-      slider.addEventListener('transitionend', self.toggleSlideVisibility.bind(slider, self));
+      slider.addEventListener('transitionend', self.hideInvisibleSlides.bind(slider, self));
       slider.dataset.has_transitionend_listener = true;
     }
     return slider;
@@ -34,7 +115,7 @@ class SlProductList {
     const self = this;
     const btn = document.querySelector(`#btn-prev-${self.sectionId}`);
     if (!btn.dataset.has_click_listener) {
-      btn.addEventListener('click', self.handlePreviousClick.bind(btn, self));
+      btn.addEventListener('click', self.handleNavigation.bind(btn, self, 'prev'));
       btn.dataset.has_click_listener = true;
     }
     return btn;
@@ -44,7 +125,7 @@ class SlProductList {
     const self = this;
     const btn = document.querySelector(`#btn-next-${self.sectionId}`);
     if (!btn.dataset.has_click_listener) {
-      btn.addEventListener('click', self.handleNextClick.bind(btn, self));
+      btn.addEventListener('click', self.handleNavigation.bind(btn, self, 'next'));
       btn.dataset.has_click_listener = true;
     }
     return btn;
@@ -61,45 +142,13 @@ class SlProductList {
     }
   }
 
-  getVisibleSlides() {
-    const sliderWidth = this.slider.offsetWidth;
-    if (sliderWidth < 640) return 1;
-    if (sliderWidth < 768) return 2;
-    if (sliderWidth < 1024) return 3;
-    if (sliderWidth < 1280) return 4;
-    return 5;
-  }
-
-  toggleSlideVisibility(self) {
-    const visibleSlides = self.getVisibleSlides();
-    const updatedSlides = self.getCurrentSlides();
-    updatedSlides.forEach((slide, index) => {
-      if (
-        (self.direction === 'next' && index < self.slidesToTransition) ||
-        (self.direction === 'prev' && index >= visibleSlides)
-      ) {
-        self.hideSlide(slide);
-      } else {
-        self.showSlide(slide);
-      }
-    });
-  }
-
-  updateSlider() {
-    const transitionWidth = this.slider.children[0].offsetWidth * this.slidesToTransition;
-    const endPos = this.direction === 'next' ? transitionWidth * -1 : 0;
-    const startPos = this.direction === 'next' ? 0 : transitionWidth * -1;
-    this.frame.forEach((slide) => this.showSlide(slide));
-    this.removeEventListenersFromSlides();
-    this.slider.innerHTML = '';
-    this.slider.style.transition = 'none';
-    this.slider.style.transform = `translateX(${startPos}px)`;
-    void this.slider.offsetWidth; // Force a reflow
-    this.slider.style.transition = `transform ${this.transitionTime}s ease-in-out`;
-    this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
-    this.attachEventListenersToSlides();
-    void this.slider.offsetWidth; // Force a reflow
-    this.slider.style.transform = `translateX(${endPos}px)`;
+  hideInvisibleSlides(self) {
+    // const updatedSlides = [...self.getCurrentSlides()];
+    // const slidesToHide = [];
+    // for (let i = 0; i < self.slidesToTransition; i++) {
+    //   slidesToHide.push(updatedSlides[i], updatedSlides[updatedSlides.length - i - 1]);
+    // }
+    // slidesToHide.forEach((slide) => self.hideSlide(slide));
   }
 
   hideSlide(slide) {
@@ -112,59 +161,22 @@ class SlProductList {
     slide.style.pointerEvents = 'auto';
   }
 
-  handleNextClick(self) {
-    const visibleSlides = self.getVisibleSlides();
-    if (self.slidesToTransition >= visibleSlides) {
-      self.slidesToTransition = visibleSlides;
-    }
-    self.direction = 'next';
-    self.startIndex = (self.startIndex + self.slidesToTransition) % self.totalSlides;
-    for (let i = 0; i < visibleSlides; i++) {
-      const index = (self.startIndex + i) % self.totalSlides;
-      self.frame.push(self.slides[index]);
-    }
-    const maxCount = visibleSlides + self.slidesToTransition;
-    if (self.frame.length > maxCount) {
-      self.frame.splice(0, self.frame.length - maxCount);
-    }
-    self.updateSlider();
-  }
+  // attachEventListenersToSlides() {
+  //   const self = this;
+  //   self.getCurrentSlides().forEach(function (slide) {
+  //     slide.addEventListener('click', self.handleSlideClick.bind(slide, self));
+  //   });
+  // }
 
-  handlePreviousClick(self) {
-    self.direction = 'prev';
-    const visibleSlides = self.getVisibleSlides();
-    if (self.slidesToTransition >= visibleSlides) {
-      self.slidesToTransition = visibleSlides;
-    }
-    self.startIndex = (self.startIndex - self.slidesToTransition + self.totalSlides) % self.totalSlides;
-    const prevArr = [];
-    for (let i = 0; i < visibleSlides; i++) {
-      const index = (self.startIndex + i) % self.totalSlides;
-      prevArr.push(self.slides[index]);
-    }
-    self.frame.unshift(...prevArr);
-    const maxCount = visibleSlides + self.slidesToTransition;
-    self.frame.splice(maxCount);
-    self.updateSlider();
-  }
-
-  attachEventListenersToSlides() {
-    const self = this;
-    self.getCurrentSlides().forEach(function (slide) {
-      slide.addEventListener('click', self.handleSlideClick.bind(slide, self));
-    });
-  }
-
-  removeEventListenersFromSlides() {
-    const self = this;
-    self.getCurrentSlides().forEach(function (slide) {
-      slide.removeEventListener('click', self.handleSlideClick.bind(slide, self));
-    });
-  }
+  // removeEventListenersFromSlides() {
+  //   const self = this;
+  //   self.getCurrentSlides().forEach(function (slide) {
+  //     slide.removeEventListener('click', self.handleSlideClick.bind(slide, self));
+  //   });
+  // }
 
   toggleSliderControlVisibility() {
-    const visibleSlides = this.getVisibleSlides();
-    if (visibleSlides < this.totalSlides) {
+    if (this.visibleSlides < this.totalSlides) {
       this.previousBtn.style.display = 'block';
       this.nextBtn.style.display = 'block';
     } else {

@@ -37,7 +37,7 @@
     </h2>
   {%- endunless -%}
 
-  <div id="slider-{{ section.id }}" class="flex w-full gap-4">
+  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center">
     {%- for product in section.settings.collection.products -%}
       <div
         id="slider-item-{{ section.id }}"
@@ -45,7 +45,7 @@
         data-link="{{ product.url | default: '#' }}"
       >
         {%- if product.featured_image -%}
-          <div class="relative flex flex-col w-full aspect-3/4 shadow-md rounded-sm border-2 border-red-700">
+          <div class="relative flex flex-col w-full aspect-3/4 shadow-md rounded-sm">
             <img
               class="object-cover w-full h-full rounded-sm"
               src="{{ product.featured_image | image_url: width: 600 }}"
@@ -76,28 +76,28 @@
             {% endcomment %}
           </div>
         {%- endif -%}
-        <span class="p-3">{{ product.title }}</span>
+        <span class="p-3 text-xl">{{ forloop.index }}</span>
       </div>
     {%- endfor -%}
   </div>
   <button
     id="btn-prev-{{ section.id }}"
-    class="absolute top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="absolute top-[50%] border-none left-0 pl-12 pr-6 py-6 cursor-pointer btn-{{ section.id }}-color-scheme"
   >
     {% render 'sl-icon-chevron-left',
       stroke_width: '2.5',
       color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-80'
+      class: 'size-10 opacity-70'
     %}
   </button>
   <button
     id="btn-next-{{ section.id }}"
-    class="absolute right-0 top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="absolute right-0 pl-6 pr-12 top-[50%] py-6 border-none cursor-pointer btn-{{ section.id }}-color-scheme"
   >
     {% render 'sl-icon-chevron-right',
       stroke_width: '2.5',
       color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-80'
+      class: 'size-10 opacity-70'
     %}
   </button>
 </div>

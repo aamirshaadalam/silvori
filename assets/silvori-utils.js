@@ -23,3 +23,8 @@ function throttle(func, delay = 500) {
     setTimeout(timeoutFunc, delay);
   };
 }
+
+function remToPx(rem) {
+  const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  return rem * rootFontSize;
+}
