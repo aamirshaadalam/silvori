@@ -43,7 +43,7 @@
       {% comment %} slide {% endcomment %}
       <div
         id="slider-item-{{ section.id }}"
-        class="hover:underline flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
+        class="group flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
         data-link="{{ product.url | default: '#' }}"
       >
         {%- if product.images.size > 0 -%}
@@ -95,7 +95,8 @@
             {% endcomment %}
           </div>
         {%- endif -%}
-        <span class="p-4 text-xl font-semibold">{{ product.title }}</span>
+        <span class="text-xl font-semibold group-hover:underline">{{ product.title }}</span>
+        <span class="text-xl font-semibold">{{ product.title }}</span>
       </div>
     {%- endfor -%}
   </div>

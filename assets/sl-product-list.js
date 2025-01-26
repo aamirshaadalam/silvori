@@ -1,6 +1,14 @@
 class SlProductList {
+  static DIR_NEXT = 'next';
+  static DIR_PREV = 'prev';
+  static DIR_NONE = 'none';
+
   constructor(sectionId) {
     this.sectionId = sectionId;
+    this.sliderHandle = `#slider-${sectionId}`;
+    this.slideHandle = `#slider-item-${sectionId}`;
+    this.prevBtnHandle = `#btn-prev-${sectionId}`;
+    this.nextBtnHandle = `#btn-next-${sectionId}`;
     this.previousBtn = this.getPreviousButton();
     this.nextBtn = this.getNextButton();
     this.slider = this.getSlider();
@@ -23,7 +31,8 @@ class SlProductList {
   init() {
     this.toggleSliderControlVisibility();
     this.setSlideWidth();
-    this.loadInitialFrame();
+    this.frame.splice(this.visibleSlides);
+    this.updateSlider();
   }
 
   setDirection(dir) {
@@ -38,20 +47,12 @@ class SlProductList {
     this.slides.forEach((slide) => (slide.style.width = `${slideWidth}px`));
   }
 
-  loadInitialFrame() {
-    this.removeEventListenersFromSlides();
-    this.frame.splice(this.visibleSlides);
-    this.slider.innerHTML = '';
-    this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
-    this.attachEventListenersToSlides();
-  }
-
   // set left and right index of the visible slides
   setIndices(dir) {
-    if (dir === 'next') {
+    if (dir === SlProductList.DIR_NEXT) {
       this.leftIndex = (this.leftIndex + this.slidesToTransition) % this.totalSlides;
       this.rightIndex = (this.rightIndex + this.slidesToTransition) % this.totalSlides;
-    } else if (dir === 'prev') {
+    } else if (dir === SlProductList.DIR_PREV) {
       this.leftIndex = (this.leftIndex - this.slidesToTransition + this.totalSlides) % this.totalSlides;
       this.rightIndex = (this.rightIndex - this.slidesToTransition + this.totalSlides) % this.totalSlides;
     }
@@ -60,9 +61,9 @@ class SlProductList {
   // remove invisible slides
   trimFrame() {
     if (this.frame.length > this.visibleSlides) {
-      if (this.prevDirection === 'next') {
+      if (this.prevDirection === SlProductList.DIR_NEXT) {
         this.frame.splice(0, 2 * this.slidesToTransition);
-      } else if (this.prevDirection === 'prev') {
+      } else if (this.prevDirection === SlProductList.DIR_PREV) {
         this.frame.splice(this.visibleSlides, 2 * this.slidesToTransition);
       }
     }
@@ -88,10 +89,15 @@ class SlProductList {
     self.updateSlider();
   }
 
+  getEndPos() {
+    const transitionWidth = (this.slider.children[0].offsetWidth + this.gapInpx) * this.slidesToTransition;
+    if (this.direction === SlProductList.DIR_NEXT) return transitionWidth * -1;
+    if (this.direction === SlProductList.DIR_PREV) return transitionWidth;
+    return 0;
+  }
+
   updateSlider() {
     this.removeEventListenersFromSlides();
-    const transitionWidth = (this.slider.children[0].offsetWidth + this.gapInpx) * this.slidesToTransition;
-    const endPos = this.direction === 'next' ? transitionWidth * -1 : transitionWidth;
     this.slider.innerHTML = '';
     this.slider.style.transition = 'none';
     this.slider.style.transform = `translateX(0px)`;
@@ -100,12 +106,12 @@ class SlProductList {
     this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
     this.attachEventListenersToSlides();
     void this.slider.offsetWidth; // Force a reflow
-    this.slider.style.transform = `translateX(${endPos}px)`;
+    this.slider.style.transform = `translateX(${this.getEndPos()}px)`;
   }
 
   getSlider() {
     const self = this;
-    const slider = document.querySelector(`#slider-${self.sectionId}`);
+    const slider = document.querySelector(self.sliderHandle);
     if (!slider.dataset.has_transitionend_listener) {
       slider.addEventListener('transitionend', self.hideInvisibleSlides.bind(slider, self));
       slider.dataset.has_transitionend_listener = true;
@@ -115,9 +121,9 @@ class SlProductList {
 
   getPreviousButton() {
     const self = this;
-    const btn = document.querySelector(`#btn-prev-${self.sectionId}`);
+    const btn = document.querySelector(self.prevBtnHandle);
     if (!btn.dataset.has_click_listener) {
-      btn.addEventListener('click', self.handleNavigation.bind(btn, self, 'prev'));
+      btn.addEventListener('click', self.handleNavigation.bind(btn, self, SlProductList.DIR_PREV));
       btn.dataset.has_click_listener = true;
     }
     return btn;
@@ -125,16 +131,16 @@ class SlProductList {
 
   getNextButton() {
     const self = this;
-    const btn = document.querySelector(`#btn-next-${self.sectionId}`);
+    const btn = document.querySelector(self.nextBtnHandle);
     if (!btn.dataset.has_click_listener) {
-      btn.addEventListener('click', self.handleNavigation.bind(btn, self, 'next'));
+      btn.addEventListener('click', self.handleNavigation.bind(btn, self, SlProductList.DIR_NEXT));
       btn.dataset.has_click_listener = true;
     }
     return btn;
   }
 
   getCurrentSlides() {
-    return document.querySelectorAll(`#slider-item-${this.sectionId}`);
+    return document.querySelectorAll(this.slideHandle);
   }
 
   handleSlideClick() {
@@ -147,11 +153,11 @@ class SlProductList {
   hideInvisibleSlides(self) {
     const updatedSlides = [...self.getCurrentSlides()];
 
-    if (self.direction === 'next') {
+    if (self.direction === SlProductList.DIR_NEXT) {
       for (let i = 0; i < 2 * self.slidesToTransition; i++) {
         self.hideSlide(updatedSlides[i]);
       }
-    } else if (self.direction === 'prev') {
+    } else if (self.direction === SlProductList.DIR_PREV) {
       for (let i = 0; i < 2 * self.slidesToTransition; i++) {
         self.hideSlide(updatedSlides[updatedSlides.length - 1 - i]);
       }

@@ -862,6 +862,10 @@ video {
   font-style: italic;
 }
 
+.no-underline {
+  text-decoration-line: none;
+}
+
 .opacity-70 {
   opacity: 0.7;
 }
@@ -931,6 +935,10 @@ video {
 
 .hover\:opacity-100:hover {
   opacity: 1;
+}
+
+.group:hover .group-hover\:underline {
+  text-decoration-line: underline;
 }
 
 @media (min-width: 640px) {
