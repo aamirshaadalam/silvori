@@ -650,6 +650,16 @@ video {
   margin-bottom: 3rem;
 }
 
+.mx-24 {
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+
+.mx-28 {
+  margin-left: 7rem;
+  margin-right: 7rem;
+}
+
 .block {
   display: block;
 }
@@ -690,6 +700,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .flex-shrink-0 {
@@ -742,17 +756,8 @@ video {
   border-radius: 0.125rem;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border-none {
   border-style: none;
-}
-
-.border-red-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(185 28 28 / var(--tw-border-opacity, 1));
 }
 
 .object-cover {

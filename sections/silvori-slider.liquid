@@ -1,4 +1,4 @@
-<script src="{{ 'silvori-slider.js'| asset_url }}" defer></script>
+<script src="{{ 'sl-product-list.js'| asset_url }}" defer></script>
 
 {%- style -%}
   .section-{{ section.id }}-card-alignment {
@@ -23,34 +23,29 @@
 {%- endstyle -%}
 
 <script>
-  const sectionId = {{ section.id | json }}
+  document.addEventListener('DOMContentLoaded', function () {
+    new SlProductList('{{ section.id }}');
+  });
 </script>
 
-{% comment %} SLIDER SECTION START {% endcomment %}
 <div
   id="slider-section-{{ section.id }}"
   class="relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
 >
   {%- unless section.settings.title == blank -%}
-    {% comment %} TITLE START {% endcomment %}
-    <h2 class="my-12 mx-20 {{ section.settings.title_size }} title-align-{{ section.id }}">
+    <h2 class="my-12 mx-28 {{ section.settings.title_size }} title-align-{{ section.id }}">
       {{ section.settings.title }}
     </h2>
-    {% comment %} TITLE END {% endcomment %}
   {%- endunless -%}
-  {% comment %} SLIDER START {% endcomment %}
-  <div id="slider-{{ section.id }}" class="flex w-full gap-4">
+  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center">
     {%- for block in section.blocks -%}
-      {% comment %} SLIDER ITEM START {% endcomment %}
       <div
         id="slider-item-{{ section.id }}"
-        class="flex flex-col gap-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
+        class="flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
         data-link="{{ block.settings.link | default: '#' }}"
       >
         {%- if block.settings.image -%}
-          {% comment %} IMAGE CONTAINER {% endcomment %}
           <div class="relative w-full flex flex-col aspect-3/4 shadow-md rounded-sm">
-            {% comment %} IMAGE START {% endcomment %}
             <img
               class="object-cover w-full h-full rounded-sm"
               src="{{ block.settings.image | image_url: width: 600 }}"
@@ -64,8 +59,7 @@
               width="100%"
               height="100%"
             >
-            {% comment %} IMAGE END {% endcomment %}
-            {% comment %} BADGE START {% endcomment %}
+
             {%- if block.settings.show_badge and block.settings.badge_label -%}
               {% style %}
                 .badge-{{ block.id }}-color {
@@ -78,43 +72,36 @@
                 {{- block.settings.badge_label -}}
               </span>
             {%- endif -%}
-            {% comment %} BADGE END {% endcomment %}
           </div>
         {%- endif -%}
-        {% comment %} IMAGE TITLE START {% endcomment %}
+
         {%- if block.settings.title -%}
           <span class="p-3">{{ block.settings.title }}</span>
         {%- endif -%}
-        {% comment %} IMAGE TITLE END {% endcomment %}
       </div>
-      {% comment %} SLIDER ITEM END {% endcomment %}
     {%- endfor -%}
   </div>
-  {% comment %} SLIDER END {% endcomment %}
-  {% comment %} SLIDER CONTROLS START {% endcomment %}
   <button
     id="btn-prev-{{ section.id }}"
-    class="absolute top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="absolute top-[50%] border-none left-0 pl-12 pr-6 py-6 cursor-pointer btn-{{ section.id }}-color-scheme"
   >
     {% render 'sl-icon-chevron-left',
       stroke_width: '2.5',
       color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-80'
+      class: 'size-10 opacity-70'
     %}
   </button>
   <button
     id="btn-next-{{ section.id }}"
-    class="absolute right-0 top-[50%] border-none py-6 px-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="absolute right-0 pl-6 pr-12 top-[50%] py-6 border-none cursor-pointer btn-{{ section.id }}-color-scheme"
   >
     {% render 'sl-icon-chevron-right',
       stroke_width: '2.5',
       color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-80'
+      class: 'size-10 opacity-70'
     %}
   </button>
-  {% comment %} SLIDER CONTROLS END {% endcomment %}
 </div>
-{% comment %} SLIDER SECTION END {% endcomment %}
 
 {% schema %}
 {

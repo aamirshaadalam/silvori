@@ -12,20 +12,18 @@ class SlProductList {
     this.slidesToTransition = 1;
     this.leftIndex = 0;
     this.rightIndex = this.visibleSlides - 1;
-    // always use setDirection function instead of
+    // always use 'setDirection' function instead of
     // directly modifying 'direction' and 'prevDirection'
     this.direction = 'none';
     this.prevDirection = 'none';
-    this.gapInRem = 1;
+    this.gapInpx = remToPx(1);
     this.init();
   }
 
   init() {
-    // this.attachEventListenersToSlides();
     this.toggleSliderControlVisibility();
     this.setSlideWidth();
-    this.loadFrame();
-    this.hideInvisibleSlides(this);
+    this.loadInitialFrame();
   }
 
   setDirection(dir) {
@@ -35,15 +33,17 @@ class SlProductList {
 
   setSlideWidth() {
     const btnWidth = this.previousBtn.offsetWidth;
-    const totalWidth = this.slider.offsetWidth - 2 * btnWidth - remToPx(1) * (this.visibleSlides - 1);
+    const totalWidth = this.slider.offsetWidth - 2 * btnWidth - this.gapInpx * (this.visibleSlides - 1);
     const slideWidth = totalWidth / this.visibleSlides;
     this.slides.forEach((slide) => (slide.style.width = `${slideWidth}px`));
   }
 
-  loadFrame() {
+  loadInitialFrame() {
+    this.removeEventListenersFromSlides();
     this.frame.splice(this.visibleSlides);
     this.slider.innerHTML = '';
     this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
+    this.attachEventListenersToSlides();
   }
 
   // set left and right index of the visible slides
@@ -89,7 +89,8 @@ class SlProductList {
   }
 
   updateSlider() {
-    const transitionWidth = (this.slider.children[0].offsetWidth + remToPx(this.gapInRem)) * this.slidesToTransition;
+    this.removeEventListenersFromSlides();
+    const transitionWidth = (this.slider.children[0].offsetWidth + this.gapInpx) * this.slidesToTransition;
     const endPos = this.direction === 'next' ? transitionWidth * -1 : transitionWidth;
     this.slider.innerHTML = '';
     this.slider.style.transition = 'none';
@@ -97,6 +98,7 @@ class SlProductList {
     void this.slider.offsetWidth; // Force a reflow
     this.slider.style.transition = `transform ${this.transitionTime}s ease-in-out`;
     this.slider.append(...this.frame.map((node) => node.cloneNode(true)));
+    this.attachEventListenersToSlides();
     void this.slider.offsetWidth; // Force a reflow
     this.slider.style.transform = `translateX(${endPos}px)`;
   }
@@ -135,7 +137,7 @@ class SlProductList {
     return document.querySelectorAll(`#slider-item-${this.sectionId}`);
   }
 
-  handleSlideClick(self) {
+  handleSlideClick() {
     var link = this.dataset.link;
     if (link) {
       window.location.href = link;
@@ -143,12 +145,17 @@ class SlProductList {
   }
 
   hideInvisibleSlides(self) {
-    // const updatedSlides = [...self.getCurrentSlides()];
-    // const slidesToHide = [];
-    // for (let i = 0; i < self.slidesToTransition; i++) {
-    //   slidesToHide.push(updatedSlides[i], updatedSlides[updatedSlides.length - i - 1]);
-    // }
-    // slidesToHide.forEach((slide) => self.hideSlide(slide));
+    const updatedSlides = [...self.getCurrentSlides()];
+
+    if (self.direction === 'next') {
+      for (let i = 0; i < 2 * self.slidesToTransition; i++) {
+        self.hideSlide(updatedSlides[i]);
+      }
+    } else if (self.direction === 'prev') {
+      for (let i = 0; i < 2 * self.slidesToTransition; i++) {
+        self.hideSlide(updatedSlides[updatedSlides.length - 1 - i]);
+      }
+    }
   }
 
   hideSlide(slide) {
@@ -161,19 +168,19 @@ class SlProductList {
     slide.style.pointerEvents = 'auto';
   }
 
-  // attachEventListenersToSlides() {
-  //   const self = this;
-  //   self.getCurrentSlides().forEach(function (slide) {
-  //     slide.addEventListener('click', self.handleSlideClick.bind(slide, self));
-  //   });
-  // }
+  attachEventListenersToSlides() {
+    const self = this;
+    self.getCurrentSlides().forEach(function (slide) {
+      slide.addEventListener('click', self.handleSlideClick.bind(slide));
+    });
+  }
 
-  // removeEventListenersFromSlides() {
-  //   const self = this;
-  //   self.getCurrentSlides().forEach(function (slide) {
-  //     slide.removeEventListener('click', self.handleSlideClick.bind(slide, self));
-  //   });
-  // }
+  removeEventListenersFromSlides() {
+    const self = this;
+    self.getCurrentSlides().forEach(function (slide) {
+      slide.removeEventListener('click', self.handleSlideClick.bind(slide));
+    });
+  }
 
   toggleSliderControlVisibility() {
     if (this.visibleSlides < this.totalSlides) {
