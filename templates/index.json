@@ -15,7 +15,7 @@
         "heading_xnrLjR": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>A Style For Every Occasion</strong>",
+            "heading": "<strong>TRENDY & STYLISH</strong>",
             "heading_size": "h1"
           }
         },
@@ -47,7 +47,7 @@
         "image": "shopify://shop_images/Untitled_design.png",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-1",
