@@ -35,7 +35,6 @@
         "heading_xnrLjR",
         "buttons_KEVH7A"
       ],
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/New_Project_10.jpg",
         "image_overlay_opacity": 30,
@@ -43,7 +42,7 @@
         "desktop_content_position": "bottom-right",
         "show_text_box": false,
         "desktop_content_alignment": "right",
-        "color_scheme": "scheme-5fd66c63-dc2b-45c3-a3c0-92ec3ac9270e",
+        "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
