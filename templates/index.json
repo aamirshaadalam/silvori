@@ -19,6 +19,13 @@
             "heading_size": "h1"
           }
         },
+        "text_RbrWK8": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>a style for every occasion</strong>",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
         "buttons_KEVH7A": {
           "type": "buttons",
           "settings": {
@@ -33,15 +40,16 @@
       },
       "block_order": [
         "heading_xnrLjR",
+        "text_RbrWK8",
         "buttons_KEVH7A"
       ],
       "settings": {
-        "image": "shopify://shop_images/New_Project_10.jpg",
-        "image_overlay_opacity": 30,
+        "image": "shopify://shop_images/Untitled_design.png",
+        "image_overlay_opacity": 0,
         "image_height": "adapt",
-        "desktop_content_position": "bottom-right",
+        "desktop_content_position": "bottom-center",
         "show_text_box": false,
-        "desktop_content_alignment": "right",
+        "desktop_content_alignment": "center",
         "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
