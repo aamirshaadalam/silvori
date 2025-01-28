@@ -232,7 +232,8 @@
         "image_block_KfpfG9": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/winter.jpg",
+            "image_title": "winter",
             "image_link": ""
           }
         },
