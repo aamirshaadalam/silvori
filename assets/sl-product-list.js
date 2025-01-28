@@ -16,7 +16,7 @@ class SlProductList {
     this.frame = [...this.slides];
     this.totalSlides = this.slides.length;
     this.visibleSlides = 5;
-    this.transitionTime = 0.1;
+    this.transitionTime = 0.3;
     this.slidesToTransition = 1;
     this.leftIndex = 0;
     this.rightIndex = this.visibleSlides - 1;

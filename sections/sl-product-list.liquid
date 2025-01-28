@@ -33,12 +33,12 @@
 >
   {% comment %} heading {% endcomment %}
   {%- unless section.settings.title == blank -%}
-    <h2 class="my-12 mx-24 {{ section.settings.title_size }} title-align-{{ section.id }}">
+    <h2 class="text-5xl font-bold uppercase my-12 mx-24 {{ section.settings.title_size }} title-align-{{ section.id }} opacity-75">
       {{ section.settings.title }}
     </h2>
   {%- endunless -%}
   {% comment %} slide container {% endcomment %}
-  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center ">
+  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center">
     {%- for product in section.settings.collection.products -%}
       {% comment %} slide {% endcomment %}
       <div
@@ -49,35 +49,25 @@
         {%- if product.images.size > 0 -%}
           {% assign featured_image = product.featured_image %}
           {% assign alt_image = product.images[1] | default: product.featured_image %}
-          <div class="relative flex flex-col w-full aspect-3/4 shadow-md rounded-sm">
+          <div class="relative flex flex-col w-full aspect-3/4 shadow-sm">
             {% comment %} main image {% endcomment %}
-            <img
-              class="absolute object-cover w-full h-full transition-opacity opacity-100 hover:opacity-0"
-              src="{{ featured_image | image_url: width: 600 }}"
-              srcset="
-                {{ featured_image | image_url: width: 300 }} 300w,
-                {{ featured_image | image_url: width: 600 }} 600w,
-                {{ featured_image | image_url: width: 1200 }} 1200w
-              "
-              sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
-              alt="{{ product.title }}"
-              width="100%"
-              height="100%"
-            >
+            {{
+              featured_image
+              | image_url: width: 600
+              | image_tag:
+                loading: 'lazy',
+                widths: '300, 400, 500, 600',
+                class: 'absolute object-cover w-full h-full transition-opacity opacity-100 hover:opacity-0'
+            }}
             {% comment %} alt image {% endcomment %}
-            <img
-              class="absolute object-cover w-full h-full transition-opacity opacity-0 hover:opacity-100"
-              src="{{ alt_image | image_url: width: 600 }}"
-              srcset="
-                {{ alt_image | image_url: width: 300 }} 300w,
-                {{ alt_image | image_url: width: 600 }} 600w,
-                {{ alt_image | image_url: width: 1200 }} 1200w
-              "
-              sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33.33vw, (min-width: 480px) 50vw,100vw"
-              alt="{{ product.title }}"
-              width="100%"
-              height="100%"
-            >
+            {{
+              alt_image
+              | image_url: width: 600
+              | image_tag:
+                loading: 'lazy',
+                widths: '300, 400, 500, 600',
+                class: 'absolute object-cover w-full h-full transition-opacity opacity-0 hover:opacity-100'
+            }}
             {% comment %} add to cart {% endcomment %}
             <div
               class="flex justify-center items-center w-full h-1/5 bg-[#6d435a] absolute bottom-0 bg-opacity-0 group-hover:bg-opacity-30 transition-opacity"
@@ -90,23 +80,17 @@
                 QUICK ADD
               </button>
             </div>
-            {% comment %}
-              {%- if block.settings.show_badge and block.settings.badge_label -%}
-                {% style %}
-                  .badge-{{ block.id }}-color {
-                    color: rgb({{ block.settings.badge_txt_color.rgb }});
-                    background-color: rgb({{ block.settings.badge_bg_color.rgb }});
-                  }
-                {% endstyle %}
-
-                <span class="absolute bottom-[2%] left-[2%] text-base font-bold rounded-full py-3 px-5 badge-{{ block.id }}-color">
-                  {{- block.settings.badge_label -}}
-                </span>
-              {%- endif -%}
-            {% endcomment %}
           </div>
         {%- endif -%}
-        <span class="text-xl group-hover:underline">{{ product.title }}</span>
+        {% comment %} star rating {% endcomment %}
+        <div class="flex flex-col gap-3 w-full text-xl px-2">
+          <span class="group-hover:underline">{{ product.title }}</span>
+          {% render 'sl-star-rating',
+            rating: product.metafields.reviews.rating.value,
+            count: product.metafields.reviews.rating_count
+          %}
+          <span>{{ product.price | money_with_currency }}</span>
+        </div>
       </div>
     {%- endfor -%}
   </div>
@@ -185,17 +169,6 @@
       "type": "select",
       "id": "title_alignment",
       "label": "Title Alignment",
-      "options": [
-        { "value": "start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "end", "label": "Right" }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "card_alignment",
-      "label": "Card Alignment",
       "options": [
         { "value": "start", "label": "Left" },
         { "value": "center", "label": "Center" },
