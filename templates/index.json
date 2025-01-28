@@ -59,6 +59,19 @@
     },
     "sl_image_grid_dAMrT6": {
       "type": "sl-image-grid",
+      "blocks": {
+        "image_block_zQf9gj": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/outerwear.webp",
+            "image_title": "OUTERWEAR",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_block_zQf9gj"
+      ],
       "settings": {
         "title": "SHOP BY CATEGORY",
         "alignment": "text-center"
