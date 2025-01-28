@@ -67,10 +67,51 @@
             "image_title": "OUTERWEAR",
             "image_link": ""
           }
+        },
+        "image_block_QCBBLQ": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/hp-sbc-blouses.webp",
+            "image_title": "BLOUSES",
+            "image_link": ""
+          }
+        },
+        "image_block_ACxe6d": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_YegQ3d": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_Qc96q7": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_PxcBd3": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
         }
       },
       "block_order": [
-        "image_block_zQf9gj"
+        "image_block_zQf9gj",
+        "image_block_QCBBLQ",
+        "image_block_ACxe6d",
+        "image_block_YegQ3d",
+        "image_block_Qc96q7",
+        "image_block_PxcBd3"
       ],
       "settings": {
         "title": "SHOP BY CATEGORY",
