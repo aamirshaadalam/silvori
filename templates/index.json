@@ -240,7 +240,8 @@
         "image_block_WDPfwg": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/fall.webp",
+            "image_title": "fall",
             "image_link": ""
           }
         },
