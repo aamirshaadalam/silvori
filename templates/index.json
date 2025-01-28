@@ -224,7 +224,8 @@
         "image_block_TdNNBY": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/summer-dress_1.jpg",
+            "image_title": "summer",
             "image_link": ""
           }
         },
