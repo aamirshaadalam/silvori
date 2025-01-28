@@ -248,7 +248,8 @@
         "image_block_M3NrkE": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/spring.webp",
+            "image_title": "spring",
             "image_link": ""
           }
         }
