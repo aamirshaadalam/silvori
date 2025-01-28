@@ -78,7 +78,18 @@
               width="100%"
               height="100%"
             >
-
+            {% comment %} add to cart {% endcomment %}
+            <div
+              class="flex justify-center items-center w-full h-1/5 bg-[#6d435a] absolute bottom-0 bg-opacity-0 group-hover:bg-opacity-30 transition-opacity"
+              onclick="event.stopPropagation()"
+            >
+              <button
+                class="text-black text-opacity-70 text-lg font-semibold py-4 px-6 bg-white border-none shadow-xl hover:scale-105 rounded-md opacity-0 group-hover:opacity-100"
+                onclick="alert('hi')"
+              >
+                QUICK ADD
+              </button>
+            </div>
             {% comment %}
               {%- if block.settings.show_badge and block.settings.badge_label -%}
                 {% style %}
