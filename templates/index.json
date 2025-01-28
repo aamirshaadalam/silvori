@@ -107,6 +107,50 @@
             "image_title": "PANTS",
             "image_link": ""
           }
+        },
+        "image_block_N8GtUL": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/hp-sbc-tops.webp",
+            "image_title": "TOPS",
+            "image_link": ""
+          }
+        },
+        "image_block_R7ECz3": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/hp-sbc-dresses.webp",
+            "image_title": "DRESSES",
+            "image_link": ""
+          }
+        },
+        "image_block_ztYeei": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_JiMDjR": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_MFHJd9": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_UBE9BG": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
         }
       },
       "block_order": [
@@ -115,7 +159,13 @@
         "image_block_ACxe6d",
         "image_block_YegQ3d",
         "image_block_Qc96q7",
-        "image_block_PxcBd3"
+        "image_block_PxcBd3",
+        "image_block_N8GtUL",
+        "image_block_R7ECz3",
+        "image_block_ztYeei",
+        "image_block_JiMDjR",
+        "image_block_MFHJd9",
+        "image_block_UBE9BG"
       ],
       "settings": {
         "title": "SHOP BY CATEGORY",
