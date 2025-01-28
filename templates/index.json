@@ -217,11 +217,55 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "sl_image_grid_Jg3iBk": {
+      "type": "sl-image-grid",
+      "blocks": {
+        "image_block_TdNNBY": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_KfpfG9": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_WDPfwg": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        },
+        "image_block_M3NrkE": {
+          "type": "image_block",
+          "settings": {
+            "image_title": "",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_block_TdNNBY",
+        "image_block_KfpfG9",
+        "image_block_WDPfwg",
+        "image_block_M3NrkE"
+      ],
+      "settings": {
+        "title": "shop by season",
+        "alignment": "text-center"
+      }
     }
   },
   "order": [
     "image_banner",
     "sl_image_grid_dAMrT6",
-    "rich_text_e3BeWm"
+    "rich_text_e3BeWm",
+    "sl_image_grid_Jg3iBk"
   ]
 }
