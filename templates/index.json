@@ -79,28 +79,32 @@
         "image_block_ACxe6d": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-suiting.webp",
+            "image_title": "SUITING",
             "image_link": ""
           }
         },
         "image_block_YegQ3d": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-sweaters.webp",
+            "image_title": "SWEATERS",
             "image_link": ""
           }
         },
         "image_block_Qc96q7": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-denim.webp",
+            "image_title": "DENIM",
             "image_link": ""
           }
         },
         "image_block_PxcBd3": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-pants.webp",
+            "image_title": "PANTS",
             "image_link": ""
           }
         }
