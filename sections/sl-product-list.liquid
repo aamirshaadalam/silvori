@@ -1,9 +1,9 @@
 <script src="{{ 'sl-product-list.js'| asset_url }}" defer></script>
 
 {%- style -%}
-  .section-{{ section.id }}-card-alignment {
+  /* .section-{{ section.id }}-card-alignment {
       align-items: {{ section.settings.card_alignment }};
-    }
+    } */
 
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -38,12 +38,12 @@
     </h2>
   {%- endunless -%}
   {% comment %} slide container {% endcomment %}
-  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center">
+  <div id="slider-{{ section.id }}" class="flex w-full gap-4 justify-center opacity-0">
     {%- for product in section.settings.collection.products -%}
       {% comment %} slide {% endcomment %}
       <div
         id="slider-item-{{ section.id }}"
-        class="group flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer section-{{ section.id }}-card-alignment"
+        class="group flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer"
         data-link="{{ product.url | default: '#' }}"
       >
         {%- if product.images.size > 0 -%}
@@ -83,7 +83,7 @@
           </div>
         {%- endif -%}
         {% comment %} star rating {% endcomment %}
-        <div class="flex flex-col gap-3 w-full text-xl px-2">
+        <div class="flex flex-col gap-3 w-full text-xl px-2 {{ section.settings.card_alignment }}">
           <span class="group-hover:underline">{{ product.title }}</span>
           {% render 'sl-star-rating',
             rating: product.metafields.reviews.rating.value,
@@ -175,6 +175,17 @@
         { "value": "end", "label": "Right" }
       ],
       "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "card_alignment",
+      "label": "Card Alignment",
+      "options": [
+        { "value": "items-start", "label": "Left" },
+        { "value": "items-center", "label": "Center" },
+        { "value": "items-end", "label": "Right" }
+      ],
+      "default": "items-start"
     },
     {
       "type": "range",

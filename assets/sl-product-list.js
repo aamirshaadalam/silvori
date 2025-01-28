@@ -45,6 +45,7 @@ class SlProductList {
     const totalWidth = this.slider.offsetWidth - 2 * btnWidth - this.gapInpx * (this.visibleSlides - 1);
     const slideWidth = totalWidth / this.visibleSlides;
     this.slides.forEach((slide) => (slide.style.width = `${slideWidth}px`));
+    this.slider.style.opacity = 1;
   }
 
   // set left and right index of the visible slides
