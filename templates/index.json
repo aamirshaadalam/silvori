@@ -152,26 +152,28 @@
             "heading_size": "h1"
           }
         },
-        "caption_nXkXNN": {
-          "type": "caption",
-          "settings": {
-            "caption": "Add a tagline",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
         "text_bdXyAc": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "text": "<h2>UP TO 70% OFF + EXTRA 40% OFF</h2>"
+          }
+        },
+        "button_rtEpii": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/frontpage",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
         "heading_NpEJn3",
-        "caption_nXkXNN",
-        "text_bdXyAc"
+        "text_bdXyAc",
+        "button_rtEpii"
       ],
       "settings": {
         "desktop_content_position": "center",
