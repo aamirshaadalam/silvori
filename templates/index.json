@@ -127,28 +127,32 @@
         "image_block_ztYeei": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-blazers.webp",
+            "image_title": "BLAZERS",
             "image_link": ""
           }
         },
         "image_block_JiMDjR": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-skirts.webp",
+            "image_title": "SKIRTS",
             "image_link": ""
           }
         },
         "image_block_MFHJd9": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-leggings.webp",
+            "image_title": "LEGGINGS",
             "image_link": ""
           }
         },
         "image_block_UBE9BG": {
           "type": "image_block",
           "settings": {
-            "image_title": "",
+            "image": "shopify://shop_images/hp-sbc-accessories.webp",
+            "image_title": "ACCESSORIES",
             "image_link": ""
           }
         }
