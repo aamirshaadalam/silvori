@@ -264,12 +264,46 @@
         "title": "shop by season",
         "alignment": "text-center"
       }
+    },
+    "newsletter_VVEP3p": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_rrngGB": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>JOIN. SHOP. EARN.</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_WEH39G": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<h5>STAY IN THE LOOP WITH NEW ARRIVALS, EXCLUSIVE DEALS, AND SO MUCH MORE. JOIN NOW TO RECEIVE YOUR EXCLUSIVE 15% OFF CODE!</h5>"
+          }
+        },
+        "email_form_BaeegG": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_rrngGB",
+        "paragraph_WEH39G",
+        "email_form_BaeegG"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "image_banner",
     "sl_image_grid_dAMrT6",
     "rich_text_e3BeWm",
-    "sl_image_grid_Jg3iBk"
+    "sl_image_grid_Jg3iBk",
+    "newsletter_VVEP3p"
   ]
 }
