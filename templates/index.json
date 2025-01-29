@@ -64,7 +64,7 @@
         "collection": "frontpage",
         "title": "<strong>new arrivals</strong>",
         "title_size": "h1",
-        "title_alignment": "start",
+        "title_alignment": "center",
         "card_alignment": "items-start",
         "padding_top": 48,
         "padding_bottom": 0
