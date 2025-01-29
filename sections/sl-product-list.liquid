@@ -6,10 +6,6 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  .title-align-{{ section.id }} {
-    text-align: {{ section.settings.title_alignment }};
-  }
-
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -29,7 +25,7 @@
 >
   {% comment %} heading {% endcomment %}
   {%- unless section.settings.title == blank -%}
-    <h2 class="text-5xl font-bold uppercase my-12 mx-24 {{ section.settings.title_size }} title-align-{{ section.id }} opacity-75">
+    <h2 class="text-5xl uppercase py-16 {{ section.settings.title_alignment }} opacity-75">
       {{ section.settings.title }}
     </h2>
   {%- endunless -%}
@@ -160,11 +156,11 @@
       "id": "title_alignment",
       "label": "Title Alignment",
       "options": [
-        { "value": "start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "end", "label": "Right" }
+        { "value": "text-start", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-end", "label": "Right" }
       ],
-      "default": "center"
+      "default": "text-center"
     },
     {
       "type": "select",

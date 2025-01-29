@@ -824,6 +824,10 @@ video {
   border-radius: 0.125rem;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-none {
   border-style: none;
 }
@@ -938,6 +942,16 @@ video {
   padding-bottom: 2.25rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -972,6 +986,14 @@ video {
 
 .text-right {
   text-align: right;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .text-2xl {
