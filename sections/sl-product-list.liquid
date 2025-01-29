@@ -29,7 +29,7 @@
 </script>
 <div
   id="slider-section-{{ section.id }}"
-  class="relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
+  class="px-16 relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
 >
   {% comment %} heading {% endcomment %}
   {%- unless section.settings.title == blank -%}
@@ -43,13 +43,13 @@
       {% comment %} slide {% endcomment %}
       <div
         id="slider-item-{{ section.id }}"
-        class="group flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer"
+        class="group flex flex-col gap-4 w-1/5 flex-shrink-0 justify-center cursor-pointer pb-4"
         data-link="{{ product.url | default: '#' }}"
       >
         {%- if product.images.size > 0 -%}
           {% assign featured_image = product.featured_image %}
           {% assign alt_image = product.images[1] | default: product.featured_image %}
-          <div class="relative flex flex-col w-full aspect-3/4 shadow-sm">
+          <div class="relative flex flex-col w-full aspect-3/4">
             {% comment %} main image {% endcomment %}
             {{
               featured_image
@@ -84,7 +84,9 @@
         {%- endif -%}
         {% comment %} star rating {% endcomment %}
         <div class="flex flex-col gap-3 w-full text-xl px-2 {{ section.settings.card_alignment }}">
-          <span class="group-hover:underline">{{ product.title }}</span>
+          <span class="group-hover:underline overflow-hidden whitespace-nowrap text-ellipsis inline-block w-full">
+            {{- product.title -}}
+          </span>
           {% render 'sl-star-rating',
             rating: product.metafields.reviews.rating.value,
             count: product.metafields.reviews.rating_count
@@ -97,23 +99,15 @@
   {% comment %} navigation buttons {% endcomment %}
   <button
     id="btn-prev-{{ section.id }}"
-    class="absolute top-[50%] border-none left-0 pl-12 pr-6 py-6 cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="shadow-lg rounded-full absolute top-[50%] left-6 p-5 cursor-pointer bg-black bg-opacity-30 hover:scale-105"
   >
-    {% render 'sl-icon-chevron-left',
-      stroke_width: '2.5',
-      color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-70'
-    %}
+    {% render 'sl-icon-chevron-left', stroke_width: '3', color: 'white', class: 'size-8' %}
   </button>
   <button
     id="btn-next-{{ section.id }}"
-    class="absolute right-0 pl-6 pr-12 top-[50%] py-6 border-none cursor-pointer btn-{{ section.id }}-color-scheme"
+    class="absolute shadow-xl right-6 top-[50%] p-5 rounded-full cursor-pointer bg-black bg-opacity-30 hover:scale-105"
   >
-    {% render 'sl-icon-chevron-right',
-      stroke_width: '2.5',
-      color: section.settings.color_scheme.settings.button,
-      class: 'size-10 opacity-70'
-    %}
+    {% render 'sl-icon-chevron-right', stroke_width: '3', color: 'white', class: 'size-8' %}
   </button>
 </div>
 

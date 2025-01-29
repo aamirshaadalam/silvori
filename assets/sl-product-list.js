@@ -20,19 +20,19 @@ class SlProductList {
     this.slidesToTransition = 1;
     this.leftIndex = 0;
     this.rightIndex = this.visibleSlides - 1;
-    // always use 'setDirection' function instead of
-    // directly modifying 'direction' and 'prevDirection'
-    this.direction = 'none';
-    this.prevDirection = 'none';
+    this.direction = 'none'; // use 'setDirection' to update
+    this.prevDirection = 'none'; // use 'setDirection' to update
     this.gapInpx = remToPx(1);
     this.init();
   }
 
   init() {
     this.toggleSliderControlVisibility();
+    this.setVisibleSlides();
     this.setSlideWidth();
     this.frame.splice(this.visibleSlides);
     this.updateSlider();
+    this.attachResizeListener();
   }
 
   setDirection(dir) {
@@ -41,8 +41,7 @@ class SlProductList {
   }
 
   setSlideWidth() {
-    const btnWidth = this.previousBtn.offsetWidth;
-    const totalWidth = this.slider.offsetWidth - 2 * btnWidth - this.gapInpx * (this.visibleSlides - 1);
+    const totalWidth = this.slider.offsetWidth - this.gapInpx * (this.visibleSlides - 1);
     const slideWidth = totalWidth / this.visibleSlides;
     this.slides.forEach((slide) => (slide.style.width = `${slideWidth}px`));
     this.slider.style.opacity = 1;
@@ -175,6 +174,16 @@ class SlProductList {
     slide.style.pointerEvents = 'auto';
   }
 
+  toggleSliderControlVisibility() {
+    if (this.visibleSlides < this.totalSlides) {
+      this.previousBtn.style.display = 'block';
+      this.nextBtn.style.display = 'block';
+    } else {
+      this.previousBtn.style.display = 'none';
+      this.nextBtn.style.display = 'none';
+    }
+  }
+
   attachEventListenersToSlides() {
     const self = this;
     self.getCurrentSlides().forEach(function (slide) {
@@ -189,13 +198,37 @@ class SlProductList {
     });
   }
 
-  toggleSliderControlVisibility() {
-    if (this.visibleSlides < this.totalSlides) {
-      this.previousBtn.style.display = 'block';
-      this.nextBtn.style.display = 'block';
+  setVisibleSlides() {
+    if (window.innerWidth <= 480) {
+      this.visibleSlides = 1;
+    } else if (window.innerWidth < 768) {
+      this.visibleSlides = 2;
+    } else if (window.innerWidth < 1024) {
+      this.visibleSlides = 3;
+    } else if (window.innerWidth < 1280) {
+      this.visibleSlides = 4;
     } else {
-      this.previousBtn.style.display = 'none';
-      this.nextBtn.style.display = 'none';
+      this.visibleSlides = 5;
     }
+  }
+
+  handleRezise() {
+    this.setVisibleSlides();
+    this.setDirection(SlProductList.DIR_NONE);
+    this.setSlideWidth();
+    this.frame.splice(0);
+    let index = this.leftIndex;
+    for (let i = 0; i < this.visibleSlides; i++) {
+      this.frame.push(this.slides[index]);
+      index = index + 1;
+      if (index > this.totalSlides - 1) index = 0;
+    }
+    this.rightIndex = this.leftIndex + this.visibleSlides - 1;
+    this.updateSlider();
+  }
+
+  attachResizeListener() {
+    const self = this;
+    window.addEventListener('resize', () => self.handleRezise());
   }
 }
