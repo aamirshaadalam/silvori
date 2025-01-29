@@ -70,7 +70,7 @@
     <!-- Image Grid -->
     <div class="flex flex-wrap justify-center gap-4 p-8 w-full">
       {% for block in section.blocks %}
-        <div class="group flex-grow flex-shrink basis-0 min-w-[200px] py-9">
+        <div class="group min-w-[200px] py-9">
           <!-- Image -->
           {% if block.settings.image %}
             <a href="{{ block.settings.image_link }}" class="block">
