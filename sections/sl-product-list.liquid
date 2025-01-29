@@ -29,7 +29,7 @@
 </script>
 <div
   id="slider-section-{{ section.id }}"
-  class="px-16 relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
+  class="px-20 relative overflow-hidden w-full section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}"
 >
   {% comment %} heading {% endcomment %}
   {%- unless section.settings.title == blank -%}
@@ -99,13 +99,13 @@
   {% comment %} navigation buttons {% endcomment %}
   <button
     id="btn-prev-{{ section.id }}"
-    class="shadow-lg rounded-full absolute top-[50%] left-6 p-5 cursor-pointer bg-black bg-opacity-30 hover:scale-105"
+    class="shadow-lg rounded-full absolute top-[50%] left-10 p-5 cursor-pointer bg-black bg-opacity-30 hover:scale-105"
   >
     {% render 'sl-icon-chevron-left', stroke_width: '3', color: 'white', class: 'size-8' %}
   </button>
   <button
     id="btn-next-{{ section.id }}"
-    class="absolute shadow-xl right-6 top-[50%] p-5 rounded-full cursor-pointer bg-black bg-opacity-30 hover:scale-105"
+    class="absolute shadow-xl right-10 top-[50%] p-5 rounded-full cursor-pointer bg-black bg-opacity-30 hover:scale-105"
   >
     {% render 'sl-icon-chevron-right', stroke_width: '3', color: 'white', class: 'size-8' %}
   </button>

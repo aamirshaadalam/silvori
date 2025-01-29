@@ -1047,6 +1047,10 @@ video {
   --tw-bg-opacity: 0.4;
 }
 
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1152,6 +1156,11 @@ video {
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .pl-12 {
