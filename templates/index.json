@@ -221,7 +221,7 @@
     "sl_product_list_k8yrVF": {
       "type": "sl-product-list",
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-1",
         "collection": "frontpage",
         "title": "<strong>new arrivals</strong>",
         "title_size": "h1",
