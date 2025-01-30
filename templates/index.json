@@ -226,7 +226,7 @@
         "title": "<strong>shop new arrivals</strong>",
         "title_size": "h1",
         "title_alignment": "text-center",
-        "card_alignment": "items-center",
+        "card_alignment": "items-start",
         "padding_top": 48,
         "padding_bottom": 0
       }
