@@ -225,8 +225,8 @@
         "collection": "frontpage",
         "title": "<strong>shop new arrivals</strong>",
         "title_size": "h1",
-        "title_alignment": "center",
-        "card_alignment": "items-start",
+        "title_alignment": "text-center",
+        "card_alignment": "items-center",
         "padding_top": 48,
         "padding_bottom": 0
       }
