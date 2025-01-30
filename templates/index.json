@@ -60,7 +60,7 @@
     "sl_product_list_k8yrVF": {
       "type": "sl-product-list",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "collection": "frontpage",
         "title": "<strong>new arrivals</strong>",
         "title_size": "h1",
