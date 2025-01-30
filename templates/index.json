@@ -195,7 +195,7 @@
         "button_rtEpii": {
           "type": "button",
           "settings": {
-            "button_label": "SHOP SALE NOW",
+            "button_label": "SHOP SALE",
             "button_link": "shopify://collections/frontpage",
             "button_style_secondary": false,
             "button_label_2": "",
