@@ -44,7 +44,7 @@
         "buttons_KEVH7A"
       ],
       "settings": {
-        "image": "shopify://shop_images/New_Project_b52f8bb1-ffc7-439d-b96f-56ace0c4c60e.jpg",
+        "image": "shopify://shop_images/Untitled_design.png",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
@@ -378,6 +378,23 @@
         "padding_bottom": 52
       }
     },
+    "173824872545112443": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_YhD9QV": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_YhD9QV"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "newsletter_VVEP3p": {
       "type": "newsletter",
       "blocks": {
@@ -409,23 +426,6 @@
         "full_width": true,
         "padding_top": 20,
         "padding_bottom": 20
-      }
-    },
-    "173824872545112443": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_featured_carousel_YhD9QV": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_featured_carousel_YhD9QV"
-      ],
-      "settings": {
-        "include_margins": true
       }
     }
   },
