@@ -182,7 +182,7 @@
         "heading_Fai9EF": {
           "type": "heading",
           "settings": {
-            "heading": "Fresh & Feminine",
+            "heading": "<strong>Fresh & Feminine</strong>",
             "heading_size": "h2"
           }
         },
@@ -229,15 +229,15 @@
         "heading_BMr7Xk": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>SUMMER COLLECTION</strong>",
+            "heading": "<strong>Sun-Kissed Style</strong>",
             "heading_size": "h2"
           }
         },
         "text_CaQkAU": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
+            "text": "<p>Step into summer with effortless elegance. Our collection features breezy dresses, chic linen sets, and vibrant hues perfect for sunny days. Crafted from lightweight, breathable fabrics, each piece keeps you cool while making a statement. Embrace the warmth in style.</p>",
+            "text_style": "subtitle"
           }
         },
         "button_tDjAgM": {
