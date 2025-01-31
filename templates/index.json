@@ -189,6 +189,29 @@
         "alignment": "text-center"
       }
     },
+    "rich_text_e4rweL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_EECFzV": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>SHOP BY SEASON</strong>",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EECFzV"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "image_with_text_WfzMqW": {
       "type": "image-with-text",
       "blocks": {
@@ -433,6 +456,7 @@
     "image_banner",
     "sl_product_list_k8yrVF",
     "sl_image_grid_dAMrT6",
+    "rich_text_e4rweL",
     "image_with_text_WfzMqW",
     "image_with_text_je6qUg",
     "image_with_text_d4yex6",
