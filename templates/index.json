@@ -323,15 +323,15 @@
         "heading_mWe46N": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>WINTER COLLECTION</strong>",
+            "heading": "<strong>Cozy & Chic</strong>",
             "heading_size": "h2"
           }
         },
         "text_79PPXp": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
+            "text": "<p>Stay warm in style with our Winter Collection. Discover elegant coats, plush knitwear, and timeless layers in rich hues and luxe fabrics. From sophisticated outerwear to cozy essentials, each piece blends comfort and sophistication.</p>",
+            "text_style": "subtitle"
           }
         },
         "button_BJDwkC": {
