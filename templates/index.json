@@ -176,6 +176,53 @@
         "alignment": "text-center"
       }
     },
+    "sl_image_grid_Jg3iBk": {
+      "type": "sl-image-grid",
+      "blocks": {
+        "image_block_M3NrkE": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/spring.webp",
+            "image_title": "spring",
+            "image_link": ""
+          }
+        },
+        "image_block_TdNNBY": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/summer-dress_606af72e-b1b0-4d2c-83d3-27ea6018a6a5.jpg",
+            "image_title": "summer",
+            "image_link": ""
+          }
+        },
+        "image_block_WDPfwg": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/fall.webp",
+            "image_title": "fall",
+            "image_link": ""
+          }
+        },
+        "image_block_KfpfG9": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/winter.jpg",
+            "image_title": "winter",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_block_M3NrkE",
+        "image_block_TdNNBY",
+        "image_block_WDPfwg",
+        "image_block_KfpfG9"
+      ],
+      "settings": {
+        "title": "shop by season",
+        "alignment": "text-center"
+      }
+    },
     "rich_text_e3BeWm": {
       "type": "rich-text",
       "blocks": {
@@ -229,53 +276,6 @@
         "card_alignment": "items-start",
         "padding_top": 48,
         "padding_bottom": 0
-      }
-    },
-    "sl_image_grid_Jg3iBk": {
-      "type": "sl-image-grid",
-      "blocks": {
-        "image_block_M3NrkE": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/spring.webp",
-            "image_title": "spring",
-            "image_link": ""
-          }
-        },
-        "image_block_TdNNBY": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/summer-dress_606af72e-b1b0-4d2c-83d3-27ea6018a6a5.jpg",
-            "image_title": "summer",
-            "image_link": ""
-          }
-        },
-        "image_block_WDPfwg": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/fall.webp",
-            "image_title": "fall",
-            "image_link": ""
-          }
-        },
-        "image_block_KfpfG9": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/winter.jpg",
-            "image_title": "winter",
-            "image_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_block_M3NrkE",
-        "image_block_TdNNBY",
-        "image_block_WDPfwg",
-        "image_block_KfpfG9"
-      ],
-      "settings": {
-        "title": "shop by season",
-        "alignment": "text-center"
       }
     },
     "newsletter_VVEP3p": {
@@ -332,9 +332,9 @@
   "order": [
     "image_banner",
     "sl_image_grid_dAMrT6",
+    "sl_image_grid_Jg3iBk",
     "rich_text_e3BeWm",
     "sl_product_list_k8yrVF",
-    "sl_image_grid_Jg3iBk",
     "newsletter_VVEP3p",
     "173824872545112443"
   ]
