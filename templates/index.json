@@ -182,15 +182,15 @@
         "heading_Fai9EF": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>SPRING COLLECTION</strong>",
+            "heading": "Fresh & Feminine",
             "heading_size": "h2"
           }
         },
         "text_wma7Rk": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
+            "text": "<p>Welcome spring with breezy silhouettes, soft pastels, and floral elegance. Our collection features flowy dresses, lightweight layers, and chic essentials designed for effortless charm. Crafted from airy fabrics, each piece radiates freshness and style. Embrace the season with elegance.</p>",
+            "text_style": "subtitle"
           }
         },
         "button_g7hBkF": {
