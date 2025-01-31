@@ -365,49 +365,6 @@
         "padding_bottom": 36
       }
     },
-    "rich_text_e3BeWm": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_NpEJn3": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>SALE</strong>",
-            "heading_size": "h2"
-          }
-        },
-        "text_bdXyAc": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>UP TO 70% OFF + EXTRA 40% OFF</strong></p>"
-          }
-        },
-        "button_rtEpii": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP SALE",
-            "button_link": "shopify://collections/frontpage",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_NpEJn3",
-        "text_bdXyAc",
-        "button_rtEpii"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 20,
-        "padding_bottom": 20
-      }
-    },
     "sl_product_list_k8yrVF": {
       "type": "sl-product-list",
       "settings": {
@@ -479,9 +436,8 @@
     "image_with_text_je6qUg",
     "image_with_text_d4yex6",
     "image_with_text_RjGDtR",
-    "rich_text_e3BeWm",
     "sl_product_list_k8yrVF",
-    "newsletter_VVEP3p",
-    "173824872545112443"
+    "173824872545112443",
+    "newsletter_VVEP3p"
   ]
 }
