@@ -322,6 +322,7 @@
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
+    {% render 'sl-sticky-notification' %}
 
     <script>
       window.shopUrl = '{{ request.origin }}';
@@ -366,6 +367,22 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const sticky_notification = document.getElementById('sticky-notification');
+        if (localStorage.getItem('hideNotification')) {
+          sticky_notification.style.display = 'none';
+        } else {
+          sticky_notification.style.display = 'flex';
+          sticky_notification.style.opacity = 1;
+        }
+
+        document.getElementById('close-notification').addEventListener('click', function () {
+          document.getElementById('sticky-notification').style.display = 'none';
+          localStorage.setItem('hideNotification', true);
+        });
+      });
     </script>
 
     {%- if settings.predictive_search_enabled -%}

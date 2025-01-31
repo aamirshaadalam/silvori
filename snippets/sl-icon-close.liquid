@@ -1,0 +1,15 @@
+{% liquid
+  assign fill = fill | default: 'none'
+  assign stroke_width = stroke_width | default: '1.5'
+  assign color = color | default: 'currentColor'
+  assign class = class | default: 'size-6'
+%}
+<svg
+  fill="{{ fill }}"
+  viewBox="0 0 24 24"
+  stroke-width="{{ stroke_width }}"
+  stroke="{{ color }}"
+  class="{{ class }}"
+>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>

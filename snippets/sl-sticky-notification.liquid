@@ -1,0 +1,31 @@
+{% style %}
+  .sticky-notification-gradient {
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+  }
+
+  @keyframes bounceUpDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .sn-animate-bounce {
+    animation: bounceUpDown 1s infinite ease-in-out;
+  }
+{% endstyle %}
+
+<div id="sticky-notification" class="fixed  bottom-5 left-0 flex justify-center items-center z-50 w-full opacity-0">
+  <div
+    class="flex justify-center items-center w-fit sticky-notification-gradient text-white text-center rounded-full py-6 px-10 text-xl font-bold shadow-2xl  sn-animate-bounce"
+  >
+    Get 10% off on your first order! Use code: <span class="font-bold mx-1">WELCOME10</span>
+    <button id="close-notification" class="ml-4 text-white text-xl font-bold hover:scale-110">
+      {% render 'sl-icon-close', stroke_width: '3', class: 'size-8' %}
+    </button>
+  </div>
+</div>
