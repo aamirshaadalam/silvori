@@ -43,8 +43,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "color_scheme": "scheme-4",
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe for Unbeatable Offers!",
         "enable_follow_on_shop": false,
         "show_social": true,
