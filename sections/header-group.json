@@ -25,9 +25,8 @@
       "block_order": [
         "announcement-bar-0"
       ],
-      "disabled": true,
       "settings": {
-        "color_scheme": "scheme-7dcef43c-4671-4979-bf9c-ba9010adf558",
+        "color_scheme": "scheme-3",
         "show_line_separator": true,
         "show_social": false,
         "auto_rotate": false,
