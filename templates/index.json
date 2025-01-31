@@ -57,6 +57,19 @@
         "show_text_below": true
       }
     },
+    "sl_product_list_k8yrVF": {
+      "type": "sl-product-list",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "collection": "frontpage",
+        "title": "<strong>shop new arrivals</strong>",
+        "title_size": "h1",
+        "title_alignment": "text-center",
+        "card_alignment": "items-start",
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
     "sl_image_grid_dAMrT6": {
       "type": "sl-image-grid",
       "blocks": {
@@ -365,19 +378,6 @@
         "padding_bottom": 36
       }
     },
-    "sl_product_list_k8yrVF": {
-      "type": "sl-product-list",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "collection": "frontpage",
-        "title": "<strong>shop new arrivals</strong>",
-        "title_size": "h1",
-        "title_alignment": "text-center",
-        "card_alignment": "items-start",
-        "padding_top": 48,
-        "padding_bottom": 52
-      }
-    },
     "173824872545112443": {
       "type": "apps",
       "blocks": {
@@ -431,12 +431,12 @@
   },
   "order": [
     "image_banner",
+    "sl_product_list_k8yrVF",
     "sl_image_grid_dAMrT6",
     "image_with_text_WfzMqW",
     "image_with_text_je6qUg",
     "image_with_text_d4yex6",
     "image_with_text_RjGDtR",
-    "sl_product_list_k8yrVF",
     "173824872545112443",
     "newsletter_VVEP3p"
   ]
