@@ -276,8 +276,8 @@
         "heading_iqRYtk": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "heading": "<strong>FALL COLLECTION</strong>",
+            "heading_size": "h2"
           }
         },
         "text_YzHQBc": {
@@ -290,8 +290,8 @@
         "button_gBJx3w": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/frontpage",
             "button_style_secondary": false
           }
         }
