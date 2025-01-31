@@ -196,8 +196,8 @@
         "button_g7hBkF": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/frontpage",
             "button_style_secondary": false
           }
         }
