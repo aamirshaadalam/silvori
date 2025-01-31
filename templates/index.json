@@ -276,7 +276,7 @@
         "heading_iqRYtk": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Autumn Elegance</strong>",
+            "heading": "<strong>AUTUMN ELEGANCE</strong>",
             "heading_size": "h2"
           }
         },
@@ -301,6 +301,7 @@
         "text_YzHQBc",
         "button_gBJx3w"
       ],
+      "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/fall.webp",
         "height": "adapt",
