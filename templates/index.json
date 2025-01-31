@@ -465,7 +465,7 @@
         "title_alignment": "text-center",
         "card_alignment": "items-start",
         "padding_top": 48,
-        "padding_bottom": 0
+        "padding_bottom": 36
       }
     },
     "newsletter_VVEP3p": {
@@ -496,7 +496,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "full_width": false,
+        "full_width": true,
         "padding_top": 20,
         "padding_bottom": 20
       }
