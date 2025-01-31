@@ -20,10 +20,18 @@
             "text": "Free Shipping on All Orders Above $100",
             "link": ""
           }
+        },
+        "announcement_eRPrPG": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_eRPrPG"
       ],
       "settings": {
         "color_scheme": "scheme-3",
