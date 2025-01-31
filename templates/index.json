@@ -398,6 +398,7 @@
         "text_bdXyAc",
         "button_rtEpii"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
