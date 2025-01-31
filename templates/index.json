@@ -223,6 +223,53 @@
         "padding_bottom": 36
       }
     },
+    "image_with_text_je6qUg": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_BMr7Xk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>SUMMER COLLECTION</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_CaQkAU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_tDjAgM": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/frontpage",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BMr7Xk",
+        "text_CaQkAU",
+        "button_tDjAgM"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/summer-dress_606af72e-b1b0-4d2c-83d3-27ea6018a6a5.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "sl_image_grid_Jg3iBk": {
       "type": "sl-image-grid",
       "blocks": {
@@ -380,6 +427,7 @@
     "image_banner",
     "sl_image_grid_dAMrT6",
     "image_with_text_WfzMqW",
+    "image_with_text_je6qUg",
     "sl_image_grid_Jg3iBk",
     "rich_text_e3BeWm",
     "sl_product_list_k8yrVF",
