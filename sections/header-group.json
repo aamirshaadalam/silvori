@@ -20,10 +20,18 @@
             "text": "Free Shipping on All Orders Above $100",
             "link": ""
           }
+        },
+        "announcement_k4WTRr": {
+          "type": "announcement",
+          "settings": {
+            "text": "UP TO 70% OFF + EXTRA 40% OFF",
+            "link": "shopify://collections/frontpage"
+          }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_k4WTRr"
       ],
       "settings": {
         "color_scheme": "scheme-3",
