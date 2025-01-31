@@ -365,54 +365,6 @@
         "padding_bottom": 36
       }
     },
-    "sl_image_grid_Jg3iBk": {
-      "type": "sl-image-grid",
-      "blocks": {
-        "image_block_M3NrkE": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/spring.webp",
-            "image_title": "spring",
-            "image_link": ""
-          }
-        },
-        "image_block_TdNNBY": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/summer-dress_606af72e-b1b0-4d2c-83d3-27ea6018a6a5.jpg",
-            "image_title": "summer",
-            "image_link": ""
-          }
-        },
-        "image_block_WDPfwg": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/fall.webp",
-            "image_title": "fall",
-            "image_link": ""
-          }
-        },
-        "image_block_KfpfG9": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/winter.jpg",
-            "image_title": "winter",
-            "image_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_block_M3NrkE",
-        "image_block_TdNNBY",
-        "image_block_WDPfwg",
-        "image_block_KfpfG9"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "shop by season",
-        "alignment": "text-center"
-      }
-    },
     "rich_text_e3BeWm": {
       "type": "rich-text",
       "blocks": {
@@ -449,7 +401,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-3",
         "full_width": true,
         "padding_top": 36,
         "padding_bottom": 36
@@ -526,7 +478,6 @@
     "image_with_text_je6qUg",
     "image_with_text_d4yex6",
     "image_with_text_RjGDtR",
-    "sl_image_grid_Jg3iBk",
     "rich_text_e3BeWm",
     "sl_product_list_k8yrVF",
     "newsletter_VVEP3p",
